@@ -11,8 +11,6 @@ var path = require('path');
 // use .env file for configuration constants
 require('dotenv').config();
 
-var cors = require('cors');
- app.use(cors());
 
 // create connection to database
 require('./handlers/dataConnector.js').connect();
@@ -24,10 +22,15 @@ const app = express();
 app.use(expressLayouts);
 app.set('view engine', 'ejs'); 
 
-// serves up static files from the public folder. 
-app.use(express.static('client'));
-app.use('/static', express.static('client'));
-
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+    
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 // setup express middleware
 app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
