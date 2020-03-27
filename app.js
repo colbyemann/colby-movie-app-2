@@ -16,13 +16,20 @@ require('./handlers/dataConnector.js').connect();
 // create an express app
 const app = express();
 
+
 // view engine setup
 app.use(expressLayouts);
 app.set('view engine', 'ejs'); 
 
-// serves up static files from the public folder. 
-app.use(express.static('client'));
-app.use('/client', express.static('client'));
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+    
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 
 // setup express middleware
 app.use(parser.json());
@@ -61,7 +68,7 @@ app.use(function(err, req, res, next) {
 });
 
 // Use express to listen to port
-let port = process.env.PORT || 8080;
+let port = process.env.PORT || 5000;
 app.listen(port, function () {
     console.log("Server now running at port= " + port);
 });
