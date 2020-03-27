@@ -21,16 +21,15 @@ const userSchema = new mongoose.Schema({
   likes: Number
   },
   email: String,
-  password_bcrypt: String,
-  apikey: String,
-  favorites: [Number]
-  });
+  password: String,
+  apikey: String
+  }, { collection: 'funwebdev' });
 
       // We'll use this later on to make sure that the user trying to log in has the
 // correct credentials. Can't be arrow syntax because need 'this' within it
 userSchema.methods.isValidPassword = async function(formPassword) {
   const user = this;
-  const hash = user.password_bcrypt;
+  const hash = user.password;
   // Hashes the password sent by the user for login and checks if the
   // digest stored in the database matches the one sent. Returns true
   // if it does else false.
