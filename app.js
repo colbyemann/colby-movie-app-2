@@ -21,7 +21,7 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs'); 
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client')));
 
 // setup express middleware
 app.use(parser.json());
