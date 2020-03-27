@@ -10,6 +10,9 @@ const flash = require('express-flash');
 // use .env file for configuration constants
 require('dotenv').config();
 
+var cors = require('cors');
+ app.use(cors());
+
 // create connection to database
 require('./handlers/dataConnector.js').connect();
 
