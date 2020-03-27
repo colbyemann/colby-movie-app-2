@@ -21,8 +21,8 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs'); 
 
 // serves up static files from the public folder. 
-app.use(express.static('public'));
-app.use('/client', express.static('public'));
+app.use(express.static('client'));
+app.use('/client', express.static('client'));
 
 // setup express middleware
 app.use(parser.json());
