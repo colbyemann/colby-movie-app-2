@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 /* ----- add new requires here ------- */
 const passport = require('passport');
 const flash = require('express-flash');
+var path = require('path');
 
 // use .env file for configuration constants
 require('dotenv').config();
