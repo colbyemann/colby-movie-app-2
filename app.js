@@ -20,8 +20,9 @@ const app = express();
 app.use(expressLayouts);
 app.set('view engine', 'ejs'); 
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client')));
+// serves up static files from the public folder. 
+app.use(express.static('public'));
+app.use('/client', express.static('public'));
 
 // setup express middleware
 app.use(parser.json());
