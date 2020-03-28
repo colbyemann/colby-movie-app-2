@@ -15,7 +15,7 @@ class MovieDetials extends React.Component {
         
         this.setState({loading: true});
         try {
-        const url = "https://colby-movie-app-2.herokuapp.com/api/find/title/" + this.props.location.state.id;
+        const url = "https://colby-movie-app-2.herokuapp.com/api/movies/" + this.props.location.state.id;
         const response = await fetch(url);
         const jsonData = await response.json();
        
