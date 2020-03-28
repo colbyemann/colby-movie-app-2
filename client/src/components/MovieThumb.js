@@ -4,7 +4,6 @@ class MovieThumb extends React.Component {
 //creates tumbnails of posts, with other info
  render() {
  const file = this.props.movie.poster;
- console.log(this.props.movie.id);
  const imgURL = "https://image.tmdb.org/t/p/w92" + file ;
  return (
  <div class="row">
