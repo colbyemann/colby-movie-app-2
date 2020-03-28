@@ -21,7 +21,7 @@ router.get('/', helper.ensureAuthenticated, (req, resp) => {
          router.post('/login', async (req, resp, next) => {
             // use passport authentication to see if valid login
             passport.authenticate('localLogin',
-            { successRedirect: '/',
+            { successRedirect: '/home',
             failureRedirect: '/login',
             failureFlash: true })(req, resp, next);
             });
