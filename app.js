@@ -52,15 +52,6 @@ app.use('/', openRoutes);
 const apiRoutes = require('./handlers/apiRouter.js');
 app.use('/api', apiRoutes );
 
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  
-    
-  // Handle React routing, return all requests to React app
-  app.use('/client', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
-}
 
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
