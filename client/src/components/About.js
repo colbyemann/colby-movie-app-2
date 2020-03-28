@@ -32,17 +32,16 @@ export default class App extends React.Component{
 
       <a style={closeStyle} onClick={this.close.bind(this)}>X</a>
       <h1>About</h1>
-            <p>Built in 48 hours</p>
           <h3>Colby Emann</h3>
-          <a href="https://github.com/colbyemann/colby-movie-app"><h3>Github</h3></a>
+          <a href="https://github.com/colbyemann/colby-movie-app-2"><h3>Github</h3></a>
           <br></br>
-          <h3>Resources</h3>
-          <a href="https://www.npmjs.com/package/react-rangeslider"><p>Range Slider</p></a>
-          <a href="https://www.npmjs.com/package/fuzzy-search"><p>Fuzzy Search</p></a>
-          <a href="https://www.npmjs.com/package/@fortawesome/react-fontawesome"><p>Font Awesome</p></a>
-          <a href="https://unsplash.com/photos/Lq6rcifGjOU"><p>Hero Image</p></a>
-          <a href="https://github.com/glenselle/simple-react-modal"><p>Simple Modal</p></a>
-          <a href="http://reactcommunity.org/react-transition-group/transition"><p>React Transition Group</p></a>
+          <h3>API LINKS</h3>
+          <a href="https://colby-movie-app-2.herokuapp.com/api/movies/"><p>All Movies</p></a>
+          <a href="https://colby-movie-app-2.herokuapp.com/api/movies/11"><p>Movie By ID</p></a>
+          <a href="https://colby-movie-app-2.herokuapp.com/api/brief"><p>Movies Brief</p></a>
+          <a href="https://colby-movie-app-2.herokuapp.com/api/find/title/Rocky"><p>Find movie by Title</p></a>
+          <a href="https://colby-movie-app-2.herokuapp.com/api/find/year/2009/2010"><p>Find Year Range</p></a>
+          <a href="https://colby-movie-app-2.herokuapp.com/api/find/rating/4/5"><p>Find Ratings Range</p></a>
           
 
       </Modal>
