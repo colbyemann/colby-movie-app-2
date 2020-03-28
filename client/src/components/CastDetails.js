@@ -10,7 +10,7 @@ class CastDetials extends React.Component {
         super(props);
         this.state = { movie: [],  loading: false, cast: []}
        }
-
+       
        async componentDidMount() {
         
         this.setState({loading: true});
@@ -18,7 +18,7 @@ class CastDetials extends React.Component {
         const url = "https://colby-movie-app-2.herokuapp.com/api/movies/" + this.props.location.state.id;
         const response = await fetch(url);
         const jsonData = await response.json();
-        
+        console.log(this.props.location.state.id);
         this.setState( {movie: jsonData, loading: false} );
         
         }
