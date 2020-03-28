@@ -11,11 +11,10 @@ import CastDetials from './components/CastDetails.js';
 
 
 class App extends React.Component {
-  state = {
-    response: '',
-    post: '',
-    responseToPost: '',
-  };
+  constructor(props) {
+    super(props);
+    this.state = { movies: [], favorites: [], loading: false};
+   }
 
    //Add Fav to array
    addFavClick = (e) => {
@@ -41,21 +40,25 @@ class App extends React.Component {
       
 
     }
-
-    componentDidMount() {
-      this.callApi()
-        .then(res => this.setState({ response: res.express }))
-        .catch(err => console.log(err));
+   
+    //fetch code from API
+   async componentDidMount() {
+    this.setState({loading: true});
+    try {
+    const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
+    const response = await fetch(url);
+    const jsonData = await response.json();
+    jsonData.sort(function(a, b){
+      if(a.title < b.title) { return -1; }
+      if(a.title > b.title) { return 1; }
+      return 0;
+  })
+    this.setState( {movies: jsonData, loading: false} );
     }
-    
-    callApi = async () => {
-      const response = await fetch('/api/users/1');
-      const body = await response.json();
-      if (response.status !== 200) throw Error(body.message);
-      
-      return body;
-    };
-  
+    catch (error) {
+    console.error(error);
+    }
+   }
 
   render() {
     const loading = this.state.loading;
@@ -64,6 +67,7 @@ class App extends React.Component {
   return (
   <main>
   <HeaderApp />
+  
   {loading ? (<Loader />) :<Route path='/' exact render={(props) => <Home {...props} movies={this.state.movies}/>} />}
   <Route path='/home' exact render={(props) => <Home {...props} movies={this.state.movies}/>}/>
  
