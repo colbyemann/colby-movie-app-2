@@ -26,9 +26,5 @@ router.get('/', helper.ensureAuthenticated, (req, resp) => {
             failureFlash: true })(req, resp, next);
             });
 
-/* GET React App */
-router.get('/app', function(req, res, next) {
-   res.sendFile(path.join(__dirname, '../client/build'));
-  });
             
 module.exports = router;
