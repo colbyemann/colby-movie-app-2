@@ -7,7 +7,7 @@ import Favorites from "./Favorites.js";
 class MovieDetials extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { movie: null,  loading: false};
+        this.state = { movie: '',  loading: false};
        }
 
     //fetch array of single movie data

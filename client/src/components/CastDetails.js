@@ -8,7 +8,7 @@ class CastDetials extends React.Component {
     //component called when view cast member button is clicked, re-populates cast and crew panel
     constructor(props) {
         super(props);
-        this.state = { movie: null,  loading: false, cast: []}
+        this.state = { movie: '',  loading: false, cast: []}
        }
        
        async componentDidMount() {
