@@ -15,11 +15,12 @@ class CastDetials extends React.Component {
         
         this.setState({loading: true});
         try {
-        const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies.php?id=" + this.props.location.state.id;
+        const url = "https://colby-movie-app-2.herokuapp.com/api/movies/" + this.props.location.state.id;
         const response = await fetch(url);
         const jsonData = await response.json();
-        
-        this.setState( {movie: jsonData, loading: false} );
+        const data = jsonData[0];
+
+        this.setState( {movie: data, loading: false} );
         
         }
         catch (error) {
