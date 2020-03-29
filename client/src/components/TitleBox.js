@@ -21,7 +21,8 @@ async componentDidMount() {
     const jsonData = await response.json();
     
     this.setState( {movie: jsonData, loading: false} );
-    console.log(this.state.movies)
+    console.log(this.state.movie)
+    console.log(this.props.id)
     }
     catch (error) {
     console.error(error);
