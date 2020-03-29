@@ -17,6 +17,7 @@ class MovieDetials extends React.Component {
         try {
         const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies.php?id=" + this.props.location.state.id;
         const response = await fetch(url);
+        console.log(response)
         const jsonData = await response.json();
        
         this.setState( {movie: jsonData, loading: false} );
