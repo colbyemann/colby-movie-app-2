@@ -5,27 +5,7 @@ import Loader from './Loader.js';
 import Favorites from "./Favorites.js";
 
 class MovieDetials extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { movie: [],  loading: false};
-       }
 
-    //fetch array of single movie data
-    async componentDidMount() {
-        
-        this.setState({loading: true});
-        try {
-        const url = "https://colby-movie-app-2.herokuapp.com/api/movies/" + this.props.location.state.id;
-        const response = await fetch(url);
-        const jsonData = await response.json();
-        
-        this.setState( {movie: jsonData, loading: false} );
-        console.log(this.state.movies)
-        }
-        catch (error) {
-        console.error(error);
-        }
-       }
 
        render(){
            const loading = this.state.loading;
@@ -33,8 +13,8 @@ class MovieDetials extends React.Component {
            return(
                <div>
                 <Favorites favorites={this.props.location.state.fav} remove={this.props.remove}/>
-               {loading ? <Loader /> : <TitleBox movie={this.state.movie} fav={this.props.fav} />}
-               <CastBox movie={this.state.movie} favorites={this.props.location.state.fav}/>
+               {loading ? <Loader /> : <TitleBox id={this.props.location.state.id} fav={this.props.fav} />}
+               <CastBox id={this.props.location.state.id} favorites={this.props.location.state.fav}/>
                </div>
            )
        }
