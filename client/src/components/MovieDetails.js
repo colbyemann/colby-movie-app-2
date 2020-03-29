@@ -8,12 +8,11 @@ class MovieDetials extends React.Component {
 
 
        render(){
-           const loading = this.state.loading;
            
            return(
                <div>
                 <Favorites favorites={this.props.location.state.fav} remove={this.props.remove}/>
-               {loading ? <Loader /> : <TitleBox id={this.props.location.state.id} fav={this.props.fav} />}
+               <TitleBox id={this.props.location.state.id} fav={this.props.fav} />
                <CastBox id={this.props.location.state.id} favorites={this.props.location.state.fav}/>
                </div>
            )
