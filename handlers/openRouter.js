@@ -4,7 +4,7 @@ const passport = require('passport');
 const helper = require('./helpers.js');
 
 // Welcome Page
-router.get('/', helper.ensureAuthenticated, (req, resp) => {
+router.post('/', helper.ensureAuthenticated, (req, resp) => {
    passport.authenticate('localLogin',
             { successRedirect: '/home',
             failureRedirect: '/index',

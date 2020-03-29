@@ -74,7 +74,7 @@ class TitleBox extends React.Component {
         let tmdb = "https://www.themoviedb.org/movie/"  + this.props.movie.tmdb_id;
         let imdb = "https://www.imdb.com/title/"  + this.props.movie.imdb_id;
         let url2 = "https://image.tmdb.org/t/p/w780" + this.props.movie.poster;
-        console.log(this.props.movie[0])
+        
         
         return(
             <article class="klob">
