@@ -6,28 +6,10 @@ import Modal, {closeStyle} from 'simple-react-modal'
 class TitleBox extends React.Component {
 //this component creates the panel with the single film data, and poster
 
-constructor(props) {
-    super(props);
-    this.state = { movie: [],  loading: false};
-   }
-
-//fetch array of single movie data
-async componentDidMount() {
-    
-    this.setState({loading: true});
-    try {
-    const url = "https://colby-movie-app-2.herokuapp.com/api/movies/" + this.props.id;
-    const response = await fetch(url);
-    const jsonData = await response.json();
-    
-    this.setState( {movie: jsonData, loading: false} );
-    console.log(this.state.movie)
-    console.log(this.props.id)
-    }
-    catch (error) {
-    console.error(error);
-    }
-   }
+    constructor(){
+        super()
+        this.state = {}
+      }
 
     //these functions filter if company, country, keywords, or genres are empty in array
     comp =(comp) =>{
@@ -88,19 +70,19 @@ async componentDidMount() {
     
     
     render(){
-        let url = "https://image.tmdb.org/t/p/w342"  + this.state.movie.poster;
-        let tmdb = "https://www.themoviedb.org/movie/"  + this.state.movie.tmdb_id;
-        let imdb = "https://www.imdb.com/title/"  + this.state.movie.imdb_id;
-        let url2 = "https://image.tmdb.org/t/p/w780" + this.state.movie.poster;
-        
+        let url = "https://image.tmdb.org/t/p/w342"  + this.props.movie.poster;
+        let tmdb = "https://www.themoviedb.org/movie/"  + this.props.movie.tmdb_id;
+        let imdb = "https://www.imdb.com/title/"  + this.props.movie.imdb_id;
+        let url2 = "https://image.tmdb.org/t/p/w780" + this.props.movie.poster;
+        console.log(this.props.movie?.production?.companies)
         
         return(
             <article class="klob">
                 <div class="klob">
-                    <h1><strong>{this.state.movie.title}</strong></h1>
+                    <h1><strong>{this.props.movie.title}</strong></h1>
                    
                    <div>
-                <a onClick={this.show.bind(this)}><img src={url} alt={this.state.movie.title}/></a>
+                <a onClick={this.show.bind(this)}><img src={url} alt={this.props.movie.title}/></a>
       <Modal
         //Modal Compent used from https://codepen.io/ph1p/pen/XjNONb
       containerStyle={{background: '#C8D5B9', width: "800px"}} //changes styling on the inner content area
@@ -117,23 +99,23 @@ async componentDidMount() {
 
                 </div>
                 <div class="klobright">
-                    <button onClick={ () => this.props.fav(this.state.movie) }>Add to Favs ❤</button>
+                    <button onClick={ () => this.props.fav(this.props.movie) }>Add to Favs ❤</button>
                     <h1><strong>Information</strong></h1>
-                    <h4>{this.state.movie.release_date}</h4>
-                    <p>${this.state.movie.revenue}</p>
-                    <p>{this.state.movie.runtime} minutes</p>
-                    <p>{this.state.movie.tagline}</p>
+                    <h4>{this.props.movie.release_date}</h4>
+                    <p>${this.props.movie.revenue}</p>
+                    <p>{this.props.movie.runtime} minutes</p>
+                    <p>{this.props.movie.tagline}</p>
                     <a href={imdb}><p>IMDB</p></a>
                     <a href={tmdb}><p>TMDB</p></a>
-                    <p>{this.state.movie?.details?.overview}</p>
-                    <Rating rating={this.state.movie?.ratings?.average}/>
-                    <p>Popularity: {Math.round(this.state.movie?.ratings?.popularity)}</p>
-                    <p>Vote Count: {this.state.movie?.ratings?.count}</p>
+                    <p>{this.props.movie?.details?.overview}</p>
+                    <Rating rating={this.props.movie?.ratings?.average}/>
+                    <p>Popularity: {Math.round(this.props.movie?.ratings?.popularity)}</p>
+                    <p>Vote Count: {this.props.movie?.ratings?.count}</p>
                     
-                    {this.comp(this.state.movie?.production?.companies)}
-                    {this.cont(this.state.movie?.production?.countries)}
-                    {this.key(this.state.movie?.details?.keywords)}
-                    {this.gen(this.state.movie?.details?.genres)}
+                    {this.comp(this.props.movie?.production?.companies)}
+                    {this.cont(this.props.movie?.production?.countries)}
+                    {this.key(this.props.movie?.details?.keywords)}
+                    {this.gen(this.props.movie?.details?.genres)}
                     
                  
                                         

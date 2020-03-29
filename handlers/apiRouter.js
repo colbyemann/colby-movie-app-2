@@ -45,7 +45,7 @@ router.get('/movies/:id', (req, resp) => {
       if (err) {
          resp.json({ message: 'Movie not found' });
       } else {
-         resp.json(data);
+         resp.json(data.toObject());
       }
    });   
  
