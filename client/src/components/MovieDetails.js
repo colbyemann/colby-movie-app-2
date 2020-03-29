@@ -20,7 +20,7 @@ class MovieDetials extends React.Component {
         const jsonData = await response.json();
        
         this.setState( {movie: jsonData, loading: false} );
-        console.log(this.state.movie);
+        console.log(this.state.movie[0]);
         }
         catch (error) {
         console.error(error);

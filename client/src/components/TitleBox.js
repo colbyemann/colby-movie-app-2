@@ -70,10 +70,10 @@ class TitleBox extends React.Component {
     
     
     render(){
-        let url = "https://image.tmdb.org/t/p/w342"  + this.props.movie[0].poster;
-        let tmdb = "https://www.themoviedb.org/movie/"  + this.props.movie[0].tmdb_id;
-        let imdb = "https://www.imdb.com/title/"  + this.props.movie[0].imdb_id;
-        let url2 = "https://image.tmdb.org/t/p/w780" + this.props.movie[0].poster;
+        let url = "https://image.tmdb.org/t/p/w342"  + this.props.movie.poster;
+        let tmdb = "https://www.themoviedb.org/movie/"  + this.props.movie.tmdb_id;
+        let imdb = "https://www.imdb.com/title/"  + this.props.movie.imdb_id;
+        let url2 = "https://image.tmdb.org/t/p/w780" + this.props.movie.poster;
         console.log(this.props.movie[0])
         
         return(
