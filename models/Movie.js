@@ -26,7 +26,7 @@ const imageSchema = new mongoose.Schema({
      crew: [Object],
      cast: [Object],
      companies: [Object],
-     countrues: [Object]
+     countries: [Object]
    }
  });
 
