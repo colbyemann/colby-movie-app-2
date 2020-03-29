@@ -7,7 +7,7 @@ import Favorites from "./Favorites.js";
 class MovieDetials extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { movie: '',  loading: false};
+        this.state = { movie: [],  loading: false};
        }
 
     //fetch array of single movie data
@@ -20,7 +20,7 @@ class MovieDetials extends React.Component {
         const jsonData = await response.json();
        
         this.setState( {movie: jsonData, loading: false} );
-        
+        console.log(this.state.movie);
         }
         catch (error) {
         console.error(error);
