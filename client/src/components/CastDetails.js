@@ -8,7 +8,7 @@ class CastDetials extends React.Component {
     //component called when view cast member button is clicked, re-populates cast and crew panel
     constructor(props) {
         super(props);
-        this.state = { movie: [],  loading: false, cast: []}
+        this.state = { movie: [0],  loading: false, cast: []}
        }
        
        async componentDidMount() {
@@ -17,8 +17,9 @@ class CastDetials extends React.Component {
         try {
         const url = "https://colby-movie-app-2.herokuapp.com/api/movies/" + this.props.location.state.id;
         const response = await fetch(url);
-        
-        this.setState( {movie: response, loading: false} );
+        const jsonData = await response.json();
+        console.log(this.props.location.state.id);
+        this.setState( {movie: jsonData, loading: false} );
         
         }
         catch (error) {

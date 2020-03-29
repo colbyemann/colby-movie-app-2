@@ -7,7 +7,7 @@ import Favorites from "./Favorites.js";
 class MovieDetials extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { movie: [],  loading: false};
+        this.state = { movie: [0],  loading: false};
        }
 
     //fetch array of single movie data
@@ -17,8 +17,9 @@ class MovieDetials extends React.Component {
         try {
         const url = "https://colby-movie-app-2.herokuapp.com/api/movies/" + this.props.location.state.id;
         const response = await fetch(url);
+        const jsonData = await response.json();
        
-        this.setState( {movie: response, loading: false} );
+        this.setState( {movie: jsonData, loading: false} );
         
         }
         catch (error) {
