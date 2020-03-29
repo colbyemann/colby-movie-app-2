@@ -5,7 +5,10 @@ const helper = require('./helpers.js');
 
 // Welcome Page
 router.get('/', helper.ensureAuthenticated, (req, resp) => {
-   resp.render('home', {user: req.user});
+   passport.authenticate('localLogin',
+            { successRedirect: '/home',
+            failureRedirect: '/index',
+            failureFlash: true })(req, resp, next);
    });
 
    router.get('/login', (req, resp) => {
@@ -25,6 +28,10 @@ router.get('/', helper.ensureAuthenticated, (req, resp) => {
             failureRedirect: '/login',
             failureFlash: true })(req, resp, next);
             });
+
+            router.get('/index', (req, resp) => {
+               resp.render('home', {message: req.flash('error')} );
+               });
 
             
 module.exports = router;
