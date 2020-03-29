@@ -20,7 +20,7 @@ class MovieDetials extends React.Component {
         const jsonData = await response.json();
         
         this.setState( {movie: jsonData, loading: false} );
-        console.log(this.state.movie)
+        console.log(this.state.movies)
         }
         catch (error) {
         console.error(error);
@@ -34,7 +34,7 @@ class MovieDetials extends React.Component {
                <div>
                 <Favorites favorites={this.props.location.state.fav} remove={this.props.remove}/>
                {loading ? <Loader /> : <TitleBox movie={this.state.movie} fav={this.props.fav} />}
-               <CastBox movie={this.state.movie[0]} favorites={this.props.location.state.fav}/>
+               <CastBox movie={this.state.movie} favorites={this.props.location.state.fav}/>
                </div>
            )
        }
