@@ -70,53 +70,21 @@ class TitleBox extends React.Component {
     
     
     render(){
-        let url = "https://image.tmdb.org/t/p/w342"  + this.props.movie.poster;
-        let tmdb = "https://www.themoviedb.org/movie/"  + this.props.movie.tmdb_id;
-        let imdb = "https://www.imdb.com/title/"  + this.props.movie.imdb_id;
-        let url2 = "https://image.tmdb.org/t/p/w780" + this.props.movie.poster;
-        console.log(this.props.movie?.production?.companies)
+       
         
         return(
             <article class="klob">
                 <div class="klob">
-                    <h1><strong>{this.props.movie.title}</strong></h1>
+                    <h1><strong>{this.props.movie}</strong></h1>
                    
                    <div>
-                <a onClick={this.show.bind(this)}><img src={url} alt={this.props.movie.title}/></a>
-      <Modal
-        //Modal Compent used from https://codepen.io/ph1p/pen/XjNONb
-      containerStyle={{background: '#C8D5B9', width: "800px"}} //changes styling on the inner content area
-      closeOnOuterClick={true}
-      show={this.state.show}
-      onClose={this.close.bind(this)}>
-
-      <a style={closeStyle} onClick={this.close.bind(this)}>X</a>
-      <div class='test-class2'><img src={url2} /></div>
           
-
-      </Modal>
+  
       </div>
 
                 </div>
                 <div class="klobright">
-                    <button onClick={ () => this.props.fav(this.props.movie) }>Add to Favs ❤</button>
-                    <h1><strong>Information</strong></h1>
-                    <h4>{this.props.movie.release_date}</h4>
-                    <p>${this.props.movie.revenue}</p>
-                    <p>{this.props.movie.runtime} minutes</p>
-                    <p>{this.props.movie.tagline}</p>
-                    <a href={imdb}><p>IMDB</p></a>
-                    <a href={tmdb}><p>TMDB</p></a>
-                    <p>{this.props.movie?.details?.overview}</p>
-                    <Rating rating={this.props.movie?.ratings?.average}/>
-                    <p>Popularity: {Math.round(this.props.movie?.ratings?.popularity)}</p>
-                    <p>Vote Count: {this.props.movie?.ratings?.count}</p>
-                    
-                    {this.comp(this.props.movie?.production?.companies)}
-                    {this.cont(this.props.movie?.production?.countries)}
-                    {this.key(this.props.movie?.details?.keywords)}
-                    {this.gen(this.props.movie?.details?.genres)}
-                    
+                  
                  
                                         
                 </div>
