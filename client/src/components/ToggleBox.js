@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from 'antd';
 
 class ToggleBox extends React.Component {
 //All 4 tooglebox components are modified from https://www.golangprograms.com/reactjs-show-hide-component-on-click.html
@@ -33,7 +34,7 @@ class ToggleBox extends React.Component {
 		return (
             <div>
                 <div className="boxTitle" onClick={this.toggleBox}>
-					<button>{title}</button>
+					<Button>{title}</Button>
 				</div>
 			{check ? (<div className="box">
 				

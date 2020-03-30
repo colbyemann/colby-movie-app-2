@@ -1,8 +1,11 @@
 import React from "react";
 import './MovieFilters.css';
 // Using an ES6 transpiler like Babel
-import Slider from 'react-rangeslider'
 import ToggleFilters from "./ToggleFilters.js";
+import { Input } from 'antd';
+import { Button } from 'antd';
+import { Radio } from 'antd';
+import { Slider } from 'antd';
  
 // To include the default styles
 import 'react-rangeslider/lib/index.css'
@@ -94,17 +97,17 @@ class MovieFilters extends React.Component {
     <form className="photoForm">
     <legend>Movie Filters</legend>
     <label>Title</label>
-    <input type='text' name='title'onChange={this.handleChange}/>
+    <Input type='text' name='title'onChange={this.handleChange}/>
     <label>Year</label>
-    <label for="before"><input type="radio" id="before" name="year" value="option1" checked={this.state.selectedOption === 'option1'} 
-                      onChange={this.handleOptionChange}/>Before <input type='text' name='beforetext' onChange={this.handleChange}/></label>
-    <label for="after"><input type="radio" id="after" name="year" value="option2" checked={this.state.selectedOption === 'option2'} 
-                      onChange={this.handleOptionChange}/>After <input type='text' name='aftertext' onChange={this.handleChange}/></label>
-    <label for="between1"><input type="radio" id="betwen1" name="year" value="option3" checked={this.state.selectedOption === 'option3'} 
-                      onChange={this.handleOptionChange}/>Between <input type='text' name='betweentext1' onChange={this.handleChange}/><input type='text' name='betweentext2' onChange={this.handleChange}/></label>
+    <label for="before"><Radio type="radio" id="before" name="year" value="option1" checked={this.state.selectedOption === 'option1'} 
+                      onChange={this.handleOptionChange}/>Before <Input type='text' name='beforetext' onChange={this.handleChange}/></label>
+    <label for="after"><Radio type="radio" id="after" name="year" value="option2" checked={this.state.selectedOption === 'option2'} 
+                      onChange={this.handleOptionChange}/>After <Input type='text' name='aftertext' onChange={this.handleChange}/></label>
+    <label for="between1"><Radio type="radio" id="betwen1" name="year" value="option3" checked={this.state.selectedOption === 'option3'} 
+                      onChange={this.handleOptionChange}/>Between <Input type='text' name='betweentext1' onChange={this.handleChange}/><Input type='text' name='betweentext2' onChange={this.handleChange}/></label>
 
 <label>Rating</label>
-    <label for="below"><input type="radio" id="below" name="rating" value="option1" checked={this.state.selectedOption2 === 'option1'} 
+    <label for="below"><Radio type="radio" id="below" name="rating" value="option1" checked={this.state.selectedOption2 === 'option1'} 
                       onChange={this.handleOptionChangeRating}/>Below <div className='slider'>
         <Slider
           min={0}
@@ -114,7 +117,7 @@ class MovieFilters extends React.Component {
           onChange={this.sliderChange1}
         />
       </div></label>
-    <label for="above"><input type="radio" id="above" name="rating" value="option2" checked={this.state.selectedOption2 === 'option2'} 
+    <label for="above"><Radio type="radio" id="above" name="rating" value="option2" checked={this.state.selectedOption2 === 'option2'} 
                       onChange={this.handleOptionChangeRating}/>Above <div className='slider'>
         <Slider
           min={0}
@@ -124,7 +127,7 @@ class MovieFilters extends React.Component {
           onChange={this.sliderChange2}
         />
       </div></label>
-    <label for="between2"><input type="radio" id="between2" name="rating" value="option3" checked={this.state.selectedOption2 === 'option3'} 
+    <label for="between2"><Radio type="radio" id="between2" name="rating" value="option3" checked={this.state.selectedOption2 === 'option3'} 
                       onChange={this.handleOptionChangeRating}/>Between <div className='slider'>
         <Slider
           min={0}
@@ -146,8 +149,8 @@ class MovieFilters extends React.Component {
       </label>
 
     
-    <button onClick={(e) => {this.handleClick(e)}}>Filter</button>
-    <button >Clear</button>
+    <Button onClick={(e) => {this.handleClick(e)}}>Filter</Button>
+    <Button >Clear</Button>
     </form>
     </div>
     </ToggleFilters>

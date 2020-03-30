@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Button } from 'antd';
 
 
 class CastView extends React.Component {
@@ -99,7 +100,7 @@ class CastView extends React.Component {
                     <Link  to={{
                 pathname: `/MovieDetails`,
                 state: {id: this.props.movie.id, fav: this.props.favorites}}}>
-                    <button>Close</button></Link>
+                    <Button>Close</Button></Link>
                 
                  
                     

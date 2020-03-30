@@ -1,6 +1,7 @@
 import React from "react";
 import Rating from './Rating.js';
 import Modal, {closeStyle} from 'simple-react-modal'
+import { Button } from 'antd';
 
 
 class TitleBox extends React.Component {
@@ -99,7 +100,7 @@ class TitleBox extends React.Component {
 
                 </div>
                 <div class="klobright">
-                    <button onClick={ () => this.props.fav(this.props.movie) }>Add to Favs ❤</button>
+                    <Button onClick={ () => this.props.fav(this.props.movie) }>Add to Favs ❤</Button>
                     <h1><strong>Information</strong></h1>
                     <h4>{this.props.movie.release_date}</h4>
                     <p>${this.props.movie.revenue}</p>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import ToggleBox from "./ToggleBox.js";
 import ToggleBoxClosed from "./ToggleBoxClosed.js";
+import { Button } from 'antd';
 
 class CastBox extends React.Component {
 
@@ -50,7 +51,7 @@ class CastBox extends React.Component {
             <article class="wings"> 
              <Link  to={{
      pathname: `/browse`,
-     }}><button class='close'>Close</button></Link>
+     }}><Button class='close'>Close</Button></Link>
             <ToggleBox title="Cast"  >
             {this.cast(this.props.movie?.production?.cast)}
 			</ToggleBox>
