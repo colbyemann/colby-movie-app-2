@@ -2,10 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 import { Transition } from 'react-transition-group';
-
 import { Input } from 'antd';
-
-const { Search } = Input;
 
 class Home extends React.Component {
 
@@ -41,13 +38,7 @@ backgroundRepeat: 'no-repeat'
  <h1>Movie Browser</h1>
  <form >
  <h3>Enter Title</h3>
- <Search
-      placeholder="input search text"
-      enterButton="Search"
-      size="large"
-      onChange={this.handleChange}
-    />
-   
+ <Input type='text' name='title' onChange={this.handleChange} />
  <p>
  <Link  to={{
      pathname: `/browse`, state: this.state.title
