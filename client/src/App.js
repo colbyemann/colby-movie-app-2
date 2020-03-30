@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import HeaderApp from './components/HeaderApp.js';
 import Home from './components/Home.js';
-import { Button } from 'antd';
 
 import MovieBrowser from './components/MovieBrowser.js';
 import { Route } from 'react-router-dom';
@@ -67,6 +66,7 @@ class App extends React.Component {
     //use the loading to display loader wheel from Loader 
     //return routes for access to pages, pass items they require, messy process 
   return (
+    
   <main>
   <HeaderApp />
   
