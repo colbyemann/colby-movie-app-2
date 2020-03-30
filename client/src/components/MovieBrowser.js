@@ -12,8 +12,7 @@ class PhotoBrowser extends React.Component {
         loading: false
     }
 
-   //spcific searchs created for each option, title, year, rating    
-   //fuzzy search engine, retrived from https://www.npmjs.com/package/fuzzy-search, doesn't work good!
+   
     searchTitle  = (event) => {
         this.setState({loading: true});
         if(event === '')
@@ -21,12 +20,12 @@ class PhotoBrowser extends React.Component {
             console.log("no title")
         }
         else{
-        let items = this.state.initialItems;
-        const searcher = new FuzzySearch(items, ['title'], {
-            caseSensitive: false,
-          });
-          const result = searcher.search(event);
-        this.setState({items: result, loading: false});
+          
+            fetch(`https://colby-movie-app-2.herokuapp.com/api/find/title/${event}`)
+              .then(res => res.ok && res.json())
+              .then(data => this.setState({ items: data.results, loading: false }))
+              .catch(error => this.setState({ error, loading: false }));
+          
         }
       }
 

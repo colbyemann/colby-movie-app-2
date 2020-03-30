@@ -38,17 +38,6 @@ class MovieFilters extends React.Component {
         });
       };
      
-       showChildrenDrawer = () => {
-         this.setState({
-           childrenDrawer: true,
-         });
-       };
-     
-       onChildrenDrawerClose = () => {
-         this.setState({
-           childrenDrawer: false,
-         });
-       };
 
        handleChange = e => {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
@@ -58,29 +47,7 @@ class MovieFilters extends React.Component {
         e.preventDefault();
         //filter by title
         this.props.search(this.state.title);
-
-        //filter by Year
-        if (this.state.selectedOption === 'option1') {
-           this.props.year(this.state.beforetext)
-          } 
-        else if (this.state.selectedOption === 'option2'){
-            this.props.yearAfter(this.state.aftertext)
-          }
-        else if (this.state.selectedOption === 'option3'){
-            this.props.yearBe(this.state.betweentext1,this.state.betweentext2)
-        }
-
-        //Filter by Ratings
-        if (this.state.selectedOption2 === 'option1') {
-            this.props.below(this.state.valuebelow)
-           } 
-         else if (this.state.selectedOption2 === 'option2'){
-             this.props.above(this.state.valueabove)
-           }
-         else if (this.state.selectedOption2 === 'option3'){
-             this.props.ratingBe(this.state.valuebetween1,this.state.valuebetween2)
-         }
-        
+  
 
        }
 
@@ -141,12 +108,15 @@ Search
           getContainer={false}
           style={{ position: 'absolute' }}
         >
-          <p>Some contents...</p>
+          <form>
+            <Input type='text' name='title'onChange={this.handleChange}/>
+            <Button onClick={(e) => {this.handleClick(e)}}>Filter</Button>
+          </form>
         </Drawer>
 
         <div style={{ marginTop: 16 }}>
           <Button type="primary" onClick={this.showDrawer2}>
-            Open
+            Year
           </Button>
         </div>
         <Drawer
