@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { Transition } from 'react-transition-group';
 import { CSSTransition, transit } from "react-css-transition";
-import { Button } from 'antd';
+
 
 class FavoriteItem extends React.Component {
     constructor(props) {
@@ -31,7 +30,7 @@ class FavoriteItem extends React.Component {
           >
                     
                     <div class="artist-collection-photo">
-                        <Button class="close2" type="button" onClick={() => {  this.handleClick(); this.props.remove(this.props.fav.id);}}>×</Button>
+                        <button class="close2" type="button" onClick={() => {  this.handleClick(); this.props.remove(this.props.fav.id);}}>×</button>
                         <Link  to={{
                 pathname: `/MovieDetails`,
                 state: {id: this.props.fav.id, fav: this.props.favorites}}}>

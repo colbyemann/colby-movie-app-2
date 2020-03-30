@@ -1,14 +1,10 @@
 import React from "react";
 import './MovieFilters.css';
-// Using an ES6 transpiler like Babel
 
 import { Input } from 'antd';
 import { Button } from 'antd';
 import { Radio } from 'antd';
-import Slider from 'react-rangeslider';
- 
-// To include the default styles
-import 'react-rangeslider/lib/index.css'
+
 
 class MovieFilters extends React.Component {
     constructor(props) {
@@ -88,12 +84,12 @@ class MovieFilters extends React.Component {
 
 
  render() {
-     //sliders retrived from https://www.npmjs.com/package/react-rangeslider
+  
  return (
     
     <aside >
        
-    <div className="detailsPhotoBox">
+    {/* <div className="detailsPhotoBox">
     <form className="photoForm">
     <legend>Movie Filters</legend>
     <label>Title</label>
@@ -152,7 +148,7 @@ class MovieFilters extends React.Component {
     <Button onClick={(e) => {this.handleClick(e)}}>Filter</Button>
     <Button >Clear</Button>
     </form>
-    </div>
+    </div> */}
     
     </aside>
    
