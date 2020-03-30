@@ -61,6 +61,32 @@ class App extends React.Component {
     }
    }
 
+
+   searchTitle  = (event) => {
+    this.setState({loading: true});
+    if(event === '')
+    {
+        console.log("no title")
+    }
+    else{
+
+      const lower = event;
+      const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
+      console.log(upper);
+      
+        fetch(`https://colby-movie-app-2.herokuapp.com/api/find/title/${upper}`)
+          .then(res => res.json())
+          .then(data => {
+            console.log(data[0]);
+            const vito = data[0];
+            console.log(vito);
+            this.setState({ movies: vito, loading: false });
+          
+          } );
+          
+    }
+  }
+
   render() {
     const loading = this.state.loading;
     //use the loading to display loader wheel from Loader 
@@ -77,7 +103,7 @@ class App extends React.Component {
   <Route path='/CastDetails' exact render={(props) => <CastDetials {...props} remove={this.removeFav} key={Math.random()}/>}/>
 
   {loading ? (<Loader />) :<Route path='/browse' exact render={ (props) =>
-  <MovieBrowser {...props} movies={this.state.movies} loading={this.state.loading} favorites={this.state.favorites} fav={this.addFavClick} remove={this.removeFav}/>
+  <MovieBrowser {...props} movies={this.state.movies} loading={this.state.loading} search={this.searchTitle} favorites={this.state.favorites} fav={this.addFavClick} remove={this.removeFav}/>
   }/>}
   </main>
   );

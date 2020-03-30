@@ -95,7 +95,7 @@ class MovieFilters extends React.Component {
 
 <div className="site-drawer-render-in-current-wrapper">
 Search
-<div style={{ marginTop: 16 }}>
+<div style={{ marginTop: 16, height: 250 }}>
           <Button type="primary" onClick={this.showDrawer}>
             Title
           </Button>

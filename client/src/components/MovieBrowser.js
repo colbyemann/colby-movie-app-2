@@ -12,31 +12,6 @@ class PhotoBrowser extends React.Component {
         loading: false
     }
 
-   
-    searchTitle  = (event) => {
-        this.setState({loading: true});
-        if(event === '')
-        {
-            console.log("no title")
-        }
-        else{
-
-          const lower = event;
-          const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
-          console.log(upper);
-          
-            fetch(`https://colby-movie-app-2.herokuapp.com/api/find/title/${upper}`)
-              .then(res => res.json())
-              .then(data => {
-                console.log(data[0]);
-                const vito = data[0];
-                console.log(vito);
-                this.setState({ items: vito, loading: false });
-              
-              } );
-              
-        }
-      }
 
       searchBeforeYear = (event) => {
         this.setState({loading: true});
@@ -116,7 +91,7 @@ class PhotoBrowser extends React.Component {
  <div>
      
  <Favorites favorites={this.props.favorites} remove={this.props.remove}/>
- <MovieFilters search={this.searchTitle} 
+ <MovieFilters search={this.props.search} 
  year={this.searchBeforeYear} yearAfter={this.searchAfterYear} yearBe={this.searchBetweenYear}
  below={this.searchBelowRating} above={this.searchAboveRating} ratingBe={this.searchBetweenRating}/>
  {loading ? <Loader /> :
