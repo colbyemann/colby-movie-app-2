@@ -1,11 +1,11 @@
 import React from "react";
 import './MovieFilters.css';
 // Using an ES6 transpiler like Babel
+
 import { Input } from 'antd';
 import { Button } from 'antd';
 import { Radio } from 'antd';
 import Slider from 'react-rangeslider';
-import { Drawer, Button } from 'antd';
  
 // To include the default styles
 import 'react-rangeslider/lib/index.css'
@@ -15,35 +15,8 @@ class MovieFilters extends React.Component {
         super(props);
         this.state = { title: '', beforetext: '', aftertext: '', betweentext1: '', betweentext2: '', 
         selectedOption: false, valuebelow: 5.0, valueabove: 5.0, valuebetween1: 5.0, valuebetween2: 5.0,
-        selectedOption2: false,  visible: false, visible2: false, visible3: false  };
+        selectedOption2: false };
        }
-
-
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
-  };
-
-  showDrawer2 = () => {
-    this.setState({
-      visible2: true,
-    });
-  };
-
-  showDrawer3 = () => {
-    this.setState({
-      visible3: true,
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      visible: false,
-      visible2: false,
-      visible3: false
-    });
-  };
 
        handleChange = e => {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
@@ -121,61 +94,7 @@ class MovieFilters extends React.Component {
     <aside >
        
     <div className="detailsPhotoBox">
-    <div className="site-drawer-render-in-current-wrapper">
-        Render in this
-        <div style={{ marginTop: 16 }}>
-          <Button type="primary" onClick={this.showDrawer}>
-            Title Filter
-          </Button>
-          <Button type="primary" onClick={this.showDrawer2}>
-            Year Filter
-          </Button>
-          <Button type="primary" onClick={this.showDrawer3}>
-            Rating Filter
-          </Button>
-        </div>
-        <Drawer
-          title="Title"
-          placement="right"
-          closable={false}
-          onClose={this.onClose}
-          visible={this.state.visible}
-          getContainer={false}
-          style={{ position: 'absolute' }}
-        >
-          <p>Some contents...</p>
-        </Drawer>
-        <Drawer
-          title="Year"
-          placement="right"
-          closable={false}
-          onClose={this.onClose}
-          visible={this.state.visible2}
-          getContainer={false}
-          style={{ position: 'absolute' }}
-        >
-          <p>Some contents...</p>
-        </Drawer>
-        <Drawer
-          title="Ratings"
-          placement="right"
-          closable={false}
-          onClose={this.onClose}
-          visible={this.state.visible3}
-          getContainer={false}
-          style={{ position: 'absolute' }}
-        >
-          <p>Some contents...</p>
-          <Slider
-          min={0}
-          max={10}
-          step={0.1}
-          value={Math.round( this.state.valuebetween1 * 10 ) / 10}
-          onChange={this.sliderChange3}
-        />
-        </Drawer>
-      </div>
-    {/* <form className="photoForm">
+    <form className="photoForm">
     <legend>Movie Filters</legend>
     <label>Title</label>
     <Input type='text' name='title'onChange={this.handleChange}/>
@@ -232,7 +151,7 @@ class MovieFilters extends React.Component {
     
     <Button onClick={(e) => {this.handleClick(e)}}>Filter</Button>
     <Button >Clear</Button>
-    </form> */}
+    </form>
     </div>
     
     </aside>
