@@ -15,6 +15,7 @@ class PhotoBrowser extends React.Component {
    
     searchTitle  = (event) => {
         this.setState({loading: true});
+        const vito = [];
         if(event === '')
         {
             console.log("no title")
@@ -23,12 +24,14 @@ class PhotoBrowser extends React.Component {
 
           const lower = event;
           const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
+          console.log(upper);
           
             fetch(`https://colby-movie-app-2.herokuapp.com/api/find/title/${upper}`)
-              .then(res => res.ok && res.json())
-              .then(data => this.setState({ items: data[0], loading: false }))
+              .then(res => res.json())
+              .then(data => {vito = data[0]} )
               .catch(error => this.setState({ error, loading: false }));
-          
+              
+              this.setState({ items: vito, loading: false })
         }
       }
 
