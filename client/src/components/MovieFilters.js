@@ -10,7 +10,7 @@ class MovieFilters extends React.Component {
         super(props);
         this.state = { title: '', beforetext: '', aftertext: '', betweentext1: '', betweentext2: '', 
         selectedOption: false, valuebelow: 5.0, valueabove: 5.0, valuebetween1: 5.0, valuebetween2: 5.0,
-        selectedOption2: false, visible: false, visible2: false };
+        selectedOption2: false, visible: false, visible2: false, visible3: false };
        }
        showDrawer = () => {
         this.setState({
@@ -23,11 +23,18 @@ class MovieFilters extends React.Component {
           visible2: true,
         });
       };
+
+      showDrawer3 = () => {
+        this.setState({
+          visible3: true,
+        });
+      };
     
       onClose = () => {
         this.setState({
           visible: false,
           visible2: false,
+          visible3: false,
         });
       };
      
@@ -119,14 +126,14 @@ class MovieFilters extends React.Component {
     <aside >
 
 <div className="site-drawer-render-in-current-wrapper">
-
+Search
 <div style={{ marginTop: 16 }}>
           <Button type="primary" onClick={this.showDrawer}>
-            Open
+            Title
           </Button>
         </div>
         <Drawer
-          title="Basic Drawer"
+          title="Title"
           placement="right"
           closable={false}
           onClose={this.onClose}
@@ -143,11 +150,28 @@ class MovieFilters extends React.Component {
           </Button>
         </div>
         <Drawer
-          title="Basic Drawer"
+          title="Year"
           placement="right"
           closable={false}
           onClose={this.onClose}
           visible={this.state.visible2}
+          getContainer={false}
+          style={{ position: 'absolute' }}
+        >
+          <p>Some contents...</p>
+        </Drawer>
+
+        <div style={{ marginTop: 16 }}>
+          <Button type="primary" onClick={this.showDrawer3}>
+            Rating
+          </Button>
+        </div>
+        <Drawer
+          title="Year"
+          placement="right"
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible3}
           getContainer={false}
           style={{ position: 'absolute' }}
         >
