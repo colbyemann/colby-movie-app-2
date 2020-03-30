@@ -1,6 +1,10 @@
 <div class="container">
-   <h1 class="title">Home</h1>
-   <div class="box">
-      <p>Welcome <%= user.details.firstname %> <%= user.details.lastname %></p>
+   <h1 class="title">Profile</h1>
+   <a href="https://colby-movie-app-2.herokuapp.com/home"><h2 style="text-align: right;">Back</h2></a>
+   <div class="box" style="text-align: center;">
+      <img src=<%= user.picture.large %>>
+      <p><%= user.details.firstname %> <%= user.details.lastname %></p>
+      <p><%= user.details.city %>, <%= user.details.country %></p>
+      <p>Member Since: <%= user.membership.date_joined %></p>
    </div>
 </div>
