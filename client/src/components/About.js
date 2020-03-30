@@ -1,5 +1,9 @@
 import React from 'react';
-import Modal, {closeStyle} from 'simple-react-modal'
+import Modal, {closeStyle} from 'simple-react-modal';
+
+import {
+  QuestionCircleOutlined
+} from '@ant-design/icons';
 
 export default class App extends React.Component{
 
@@ -21,7 +25,7 @@ export default class App extends React.Component{
     return (
       <div>
         
-      <a onClick={this.show.bind(this)}><button>About</button></a>
+      <a onClick={this.show.bind(this)}><QuestionCircleOutlined />About</a>
       <Modal
       //this will completely overwrite the default css completely
       //Modal Compent used from https://codepen.io/ph1p/pen/XjNONb

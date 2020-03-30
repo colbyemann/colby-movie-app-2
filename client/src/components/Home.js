@@ -17,16 +17,16 @@ class Home extends React.Component {
  render() {
     //Hero Image modified from Lab 2
     //Transition example modified from http://reactcommunity.org/react-transition-group/transition
-    // image retrived from unsplashed https://unsplash.com/photos/Lq6rcifGjOU
+    // image retrived from unsplashed https://unsplash.com/photos/rfRoZPJ8NOg
  let imgUrl =
-"https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80";
+"https://images.unsplash.com/photo-1523828469188-8ec2b90b6490?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80";
  return (
  <div className = 'banner'
  style = {{ backgroundImage: `url(${imgUrl})`,
  height: '800px',
 backgroundSize: 'cover',
 backgroundPosition: 'center center',
-backgroundRepeat: 'no-repeat',
+backgroundRepeat: 'no-repeat'
  }}>
 
 
@@ -54,7 +54,7 @@ backgroundRepeat: 'no-repeat',
  </Transition>
 
 
- <h4 class="credit">Photo Credit: @dmjdenise</h4>
+ <h4 class="credit">Photo Credit: @artur_luczka</h4>
  </div>
  
  );

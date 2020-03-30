@@ -13,7 +13,7 @@
   --favorites-back: #FAF3DD;
   --details-back: #feffff;
   --details-box-back: #FAF3DD;
-  --header-back: #82879B;
+  --header-back: #f6ffed;
   --button-back: #8FC0A9;
   --border-color: #c2dde6;
   --list-box-back: #feffff;
@@ -172,20 +172,18 @@ legend {
 
 
 .banner {
-  color: white;
+  color: #d9f7be;
   font-weight: bold;
   text-align: center;
 }
 
 .banner div h1 {
   font-size: 2rem;
-  text-shadow: 2px 2px black;
 }
 .banner div h3 {
   font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 3px;
-  text-shadow: 2px 2px black;
 }
 
 .banner div {
@@ -194,7 +192,7 @@ legend {
 }
 
 .homebox{
-  background-color: #C8D5B9;
+  background-color: #d9f7be;
 
   border-radius: 25px;
 }
@@ -270,27 +268,7 @@ aside {
 
 .credit{padding-top: 10%}
 
-.animation{
-  position: relative;
-}
 
-.animation-entered{
-  color: white;
-  margin-top: 20px;
-}
-
-.animation-entering{
-  animation-name: example;
-  animation-duration: 4s;
-}
-
-@keyframes example{
-  0% {color: red;  top: 300px;}
-  25% {color: yellow; top: 250px;}
-  50% {color: blue; top: 200px;}
-  75% {color: green; top: 150px;}
-  100% {color: red; top: 100px;}
-}
 
 .wings{
   height: 800px;
@@ -331,46 +309,7 @@ aside {
   z-index: 9999;
   }
 
-  .thing-enter {
-    opacity: 0.01;
-    transition: opacity 1s ease-in;
-   }
-   
-   .thing-enter.thing-enter-active {
-     opacity: 1;
-   }
-   
-    .thing-leave {
-     opacity: 1;
-     transition: opacity 1s ease-in;
-    }
-   
-    .thing-leave.thing-leave-active {
-     opacity: 0.01;
-    }
-
-
-    .newanimation{
-      position: relative;
-    }
-    
-    .newanimation-entered{
-      color: white;
-      margin-top: 20px;
-    }
-    
-    .newanimation-entering{
-      animation-name: example2;
-      animation-duration: 4s;
-    }
-    
-    @keyframes example2{
-      0% {opacity: 100%;}
-      25% {opacity: 80%;}
-      50% {opacity: 60%;;}
-      75% {opacity: 20%;}
-      100% {opacity: 0%;}
-    }
+ 
 
     .buttonhunter{
       float: right;
