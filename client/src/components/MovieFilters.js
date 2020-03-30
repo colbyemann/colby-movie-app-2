@@ -5,7 +5,7 @@ import ToggleFilters from "./ToggleFilters.js";
 import { Input } from 'antd';
 import { Button } from 'antd';
 import { Radio } from 'antd';
-import { Slider } from 'antd';
+import Slider from 'react-rangeslider';
  
 // To include the default styles
 import 'react-rangeslider/lib/index.css'
