@@ -10,20 +10,26 @@ class MovieFilters extends React.Component {
         super(props);
         this.state = { title: '', beforetext: '', aftertext: '', betweentext1: '', betweentext2: '', 
         selectedOption: false, valuebelow: 5.0, valueabove: 5.0, valuebetween1: 5.0, valuebetween2: 5.0,
-        selectedOption2: false, visible: false, childrenDrawer: false };
+        selectedOption2: false, visible: false, visible2: false };
        }
-       
        showDrawer = () => {
-         this.setState({
-           visible: true,
-         });
-       };
-     
-       onClose = () => {
-         this.setState({
-           visible: false,
-         });
-       };
+        this.setState({
+          visible: true,
+        });
+      };
+
+      showDrawer2 = () => {
+        this.setState({
+          visible2: true,
+        });
+      };
+    
+      onClose = () => {
+        this.setState({
+          visible: false,
+          visible2: false,
+        });
+      };
      
        showChildrenDrawer = () => {
          this.setState({
@@ -113,32 +119,42 @@ class MovieFilters extends React.Component {
     <aside >
 
 <div className="site-drawer-render-in-current-wrapper">
-<div>
-        <Button type="primary" onClick={this.showDrawer}>
-          Open drawer
-        </Button>
+
+<div style={{ marginTop: 16 }}>
+          <Button type="primary" onClick={this.showDrawer}>
+            Open
+          </Button>
+        </div>
         <Drawer
-          title="Multi-level drawer"
-          width={520}
+          title="Basic Drawer"
+          placement="right"
           closable={false}
           onClose={this.onClose}
           visible={this.state.visible}
+          getContainer={false}
+          style={{ position: 'absolute' }}
         >
-          <Button type="primary" onClick={this.showChildrenDrawer}>
-            Two-level drawer
+          <p>Some contents...</p>
+        </Drawer>
+
+        <div style={{ marginTop: 16 }}>
+          <Button type="primary" onClick={this.showDrawer2}>
+            Open
           </Button>
-          <Drawer
-            title="Two-level Drawer"
-            width={320}
-            closable={false}
-            onClose={this.onChildrenDrawerClose}
-            visible={this.state.childrenDrawer}
-          >
-            This is two-level drawer
-          </Drawer>
+        </div>
+        <Drawer
+          title="Basic Drawer"
+          placement="right"
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible2}
+          getContainer={false}
+          style={{ position: 'absolute' }}
+        >
+          <p>Some contents...</p>
         </Drawer>
       </div>
-    </div>
+  
        
     {/* <div className="detailsPhotoBox">
     <form className="photoForm">
