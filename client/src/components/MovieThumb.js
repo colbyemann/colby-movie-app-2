@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Button } from 'antd';
+
 class MovieThumb extends React.Component {
 //creates tumbnails of posts, with other info
  render() {
@@ -18,7 +20,7 @@ class MovieThumb extends React.Component {
  <div class="column"><p>{this.props.movie.ratings.average}</p> </div>
  <div class="column"><Link  to={{
      pathname: `/MovieDetails`,
-     state: {id: this.props.movie.id, fav: this.props.favorites}}}><button >View</button></Link><button onClick={ () => this.props.fav(this.props.movie) }>❤</button></div>
+     state: {id: this.props.movie.id, fav: this.props.favorites}}}><Button >View</Button></Link><Button onClick={ () => this.props.fav(this.props.movie) }>❤</Button></div>
 </div>
  
  

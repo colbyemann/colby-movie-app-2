@@ -21,7 +21,7 @@ class CastBox extends React.Component {
                                 
                                 <Link  to={{
      pathname: `/CastDetails`,
-     state: {id: this.props.movie.id, fav: this.props.favorites, cast: c.id}}}><button>View</button></Link>
+     state: {id: this.props.movie.id, fav: this.props.favorites, cast: c.id}}}><Button>View</Button></Link>
                                 </div>)}
             </div>
         }

@@ -2,17 +2,40 @@ import React from "react";
 import './MovieFilters.css';
 
 import { Input } from 'antd';
-import { Button } from 'antd';
 import { Radio } from 'antd';
-
+import { Drawer, Button } from 'antd';
 
 class MovieFilters extends React.Component {
     constructor(props) {
         super(props);
         this.state = { title: '', beforetext: '', aftertext: '', betweentext1: '', betweentext2: '', 
         selectedOption: false, valuebelow: 5.0, valueabove: 5.0, valuebetween1: 5.0, valuebetween2: 5.0,
-        selectedOption2: false };
+        selectedOption2: false, visible: false, visible2: false, visible3: false };
        }
+
+       showDrawer = () => {
+        this.setState({
+          visible: true,
+        });
+      };
+
+      showDrawer2 = () => {
+        this.setState({
+          visible2: true,
+        });
+      };
+
+      showDrawer3 = () => {
+        this.setState({
+          visible3: true,
+        });
+      };
+    
+      onClose = () => {
+        this.setState({
+          visible: false,
+        });
+      };
 
        handleChange = e => {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
@@ -88,6 +111,26 @@ class MovieFilters extends React.Component {
  return (
     
     <aside >
+
+<div className="site-drawer-render-in-current-wrapper">
+        Render in this
+        <div style={{ marginTop: 16 }}>
+          <Button type="primary" onClick={this.showDrawer}>
+            Open
+          </Button>
+        </div>
+        <Drawer
+          title="Basic Drawer"
+          placement="right"
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible}
+          getContainer={false}
+          style={{ position: 'absolute' }}
+        >
+          <p>Some contents...</p>
+        </Drawer>
+      </div>
        
     {/* <div className="detailsPhotoBox">
     <form className="photoForm">
