@@ -191,9 +191,13 @@ legend {
   margin-top: 100px;
 }
 
+.inp{
+  margin: 10px !important;
+}
+
 .homebox{
   background-color: #d9f7be;
-
+  padding: 20px;
   border-radius: 25px;
 }
 

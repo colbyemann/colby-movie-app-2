@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Transition } from 'react-transition-group';
 import { Input } from 'antd';
+import { Button } from 'antd';
 
 class Home extends React.Component {
 
@@ -34,20 +35,23 @@ backgroundRepeat: 'no-repeat'
 <Transition timeout={4000} in={true} appear>
     {(status) => 
     <div className={`animation animation-${status}`}>
- <div class="homebox">
+ <div class="homebox"> 
  <h1>Movie Browser</h1>
  <form >
  <h3>Enter Title</h3>
- <Input type='text' name='title' onChange={this.handleChange} />
+ <div class='inp'>
+ <Input type='text' name='title' onChange={this.handleChange}/>
+ </div>
  <p>
+     
  <Link  to={{
      pathname: `/browse`, state: this.state.title
      }}>
- <button>Show Matching Movies</button>
+ <Button >Show Matching Movies</Button>
  </Link>
 
  <Link to={{ pathname: '/browse'}}>
- <button>Show All Movies</button>
+ <Button style = {{margin: '10px'}}>Show All Movies</Button>
  </Link>
  </p>
  </form>
