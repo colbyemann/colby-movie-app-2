@@ -2,7 +2,7 @@ import React from "react";
 import './MovieFilters.css';
 
 import { Input } from 'antd';
-import { Radio } from 'antd';
+
 import { Drawer, Button } from 'antd';
 
 class MovieFilters extends React.Component {
@@ -41,6 +41,7 @@ class MovieFilters extends React.Component {
 
        handleChange = e => {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
+        console.log(this.state.title)
        }
 
        handleClick = (e) => {

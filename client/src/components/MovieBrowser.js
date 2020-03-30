@@ -20,10 +20,13 @@ class PhotoBrowser extends React.Component {
             console.log("no title")
         }
         else{
+
+          const lower = event;
+          const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
           
-            fetch(`https://colby-movie-app-2.herokuapp.com/api/find/title/${event}`)
+            fetch(`https://colby-movie-app-2.herokuapp.com/api/find/title/${upper}`)
               .then(res => res.ok && res.json())
-              .then(data => this.setState({ items: data.results, loading: false }))
+              .then(data => this.setState({ items: data[0], loading: false }))
               .catch(error => this.setState({ error, loading: false }));
           
         }
