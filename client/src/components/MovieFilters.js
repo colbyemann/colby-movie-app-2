@@ -34,6 +34,8 @@ class MovieFilters extends React.Component {
       onClose = () => {
         this.setState({
           visible: false,
+          visible2: false,
+          visible3: false,
         });
       };
 
@@ -113,18 +115,46 @@ class MovieFilters extends React.Component {
     <aside >
 
 <div className="site-drawer-render-in-current-wrapper">
-        Render in this
+        Filters
         <div style={{ marginTop: 16 }}>
           <Button type="primary" onClick={this.showDrawer}>
-            Open
+            Title
+          </Button>
+          <Button type="primary" onClick={this.showDrawer2}>
+            Year
+          </Button>
+          <Button type="primary" onClick={this.showDrawer3}>
+            Rating
           </Button>
         </div>
         <Drawer
-          title="Basic Drawer"
+          title="Title"
           placement="right"
           closable={false}
           onClose={this.onClose}
           visible={this.state.visible}
+          getContainer={false}
+          style={{ position: 'absolute' }}
+        >
+          <p>Title</p>
+        </Drawer>
+        <Drawer
+          title="Year"
+          placement="right"
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible2}
+          getContainer={false}
+          style={{ position: 'absolute' }}
+        >
+          <p>Some contents...</p>
+        </Drawer>
+        <Drawer
+          title="Rating"
+          placement="right"
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible3}
           getContainer={false}
           style={{ position: 'absolute' }}
         >
