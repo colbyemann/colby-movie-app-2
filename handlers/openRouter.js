@@ -26,5 +26,39 @@ router.get('/', helper.ensureAuthenticated, (req, resp) => {
             failureFlash: true })(req, resp, next);
             });
 
+            router.post('/home', async (req, resp, next) => {
+               // use passport authentication to see if valid login
+               passport.authenticate('localLogin',
+               { successRedirect: '/home',
+               failureRedirect: '/login',
+               failureFlash: true })(req, resp, next);
+               });
+
+               router.post('/browse', async (req, resp, next) => {
+                  // use passport authentication to see if valid login
+                  passport.authenticate('localLogin',
+                  { successRedirect: '/browse',
+                  failureRedirect: '/login',
+                  failureFlash: true })(req, resp, next);
+                  });
+
+                  router.post('/MovieDetails', async (req, resp, next) => {
+                     // use passport authentication to see if valid login
+                     passport.authenticate('localLogin',
+                     { successRedirect: '/MovieDetails',
+                     failureRedirect: '/login',
+                     failureFlash: true })(req, resp, next);
+                     });
+
+                     router.post('/CastDetails', async (req, resp, next) => {
+                        // use passport authentication to see if valid login
+                        passport.authenticate('localLogin',
+                        { successRedirect: '/CastDetails',
+                        failureRedirect: '/login',
+                        failureFlash: true })(req, resp, next);
+                        });
+
+                  
+
             
 module.exports = router;
