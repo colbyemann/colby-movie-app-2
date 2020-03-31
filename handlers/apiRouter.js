@@ -102,17 +102,30 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
        
        });
 
-       router.post('/favorites/:add', helper.ensureAuthenticated, ( req, resp) => {
+       router.get('/favorites/:add/a', helper.ensureAuthenticated, ( req, resp) => {
           var favs = req.params.add;
          UserModel.findOneAndUpdate({
             _id: req.user._id
         }, {
             "$push": {"favorites": favs} 
-        }, function(err) {
+        }, {useFindAndModify: false}, function(err) {
             if (err) throw (err);
         });
            
        
        });
+
+       router.get('/favorites/:remove/r', helper.ensureAuthenticated, ( req, resp) => {
+         var favs = req.params.remove;
+        UserModel.findOneAndUpdate({
+           _id: req.user._id
+       }, {
+           "$pull": {"favorites": favs} 
+       }, {useFindAndModify: false}, function(err) {
+           if (err) throw (err);
+       });
+          
+      
+      });
 
 module.exports = router;
