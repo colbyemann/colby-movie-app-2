@@ -100,7 +100,7 @@ class TitleBox extends React.Component {
 
                 </div>
                 <div class="klobright">
-                    <Button onClick={ () => this.props.fav(this.props.movie) }>Add to Favs ❤</Button>
+                    <Button onClick={ () => this.props.fav(this.props.movie.poster) }>Add to Favs ❤</Button>
                     <h1><strong>Information</strong></h1>
                     <h4>{this.props.movie.release_date}</h4>
                     <p>${this.props.movie.revenue}</p>

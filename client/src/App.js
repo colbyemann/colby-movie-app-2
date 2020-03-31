@@ -128,7 +128,6 @@ class App extends React.Component {
             }
           }
         else if(prevState.add !== this.state.add){
-            this.setState({loading: true});
             try {
               const url = "https://colby-movie-app-2.herokuapp.com/api/favorites/" + this.state.add + "/a";
               const response = await fetch(url);
@@ -136,10 +135,7 @@ class App extends React.Component {
               console.log(jsonData[0]['favorites'])
               console.log(jsonData['favorites'])
               console.log(jsonData)
-              const data = jsonData['favorites'];
-              
-
-              this.setState( {favorites: data, loading: false} );
+              return ;
               
               }
               catch (error) {
@@ -147,14 +143,13 @@ class App extends React.Component {
               }
             }
         else if(prevState.remove !== this.state.remove){
-              this.setState({loading: true});
               try {
                 const url = "https://colby-movie-app-2.herokuapp.com/api/favorites/" + this.state.remove;
                 const response = await fetch(url);
                 const jsonData = await response.json();
-                const data = jsonData[0]['favorites'];
+                const data = jsonData['favorites'];
   
-                this.setState( {favorites: data, loading: false} );
+                return ;
                 
                 }
                 catch (error) {
