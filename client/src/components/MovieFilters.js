@@ -70,7 +70,7 @@ class MovieFilters extends React.Component {
        handleClickClear = (e) => {
         e.preventDefault();
         //filter by rating
-        this.props.searchClear(true);
+        this.props.searchClear(Math.random());
   
 
        }
