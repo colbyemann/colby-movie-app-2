@@ -13,7 +13,7 @@ import CastDetials from './components/CastDetails.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { movies: [], favorites: [], loading: false};
+    this.state = { movies: [], favorites: [], loading: false, search: ''};
    }
 
    //Add Fav to array
@@ -44,6 +44,22 @@ class App extends React.Component {
     //fetch code from API
    async componentDidMount() {
     this.setState({loading: true});
+    if(search != '')
+    {
+      try {
+        const url = "https://colby-movie-app-2.herokuapp.com/api/find/title/" + this.state.search;
+        const response = await fetch(url);
+        const jsonData = await response.json();
+        const data = jsonData[0];
+       
+        this.setState( {movies: data, loading: false} );
+        console.log(this.state.movie);
+        }
+        catch (error) {
+        console.error(error);
+        }
+    }
+    else{
     try {
     const url = "https://colby-movie-app-2.herokuapp.com/api/movies";
     const response = await fetch(url);
@@ -59,32 +75,17 @@ class App extends React.Component {
     catch (error) {
     console.error(error);
     }
+  }
+    
    }
 
 
    searchTitle  = (event) => {
-    this.setState({loading: true});
-    if(event === '')
-    {
-        console.log("no title")
-    }
-    else{
-
-      const lower = event;
-      const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
-      console.log(upper);
-      
-        fetch(`https://colby-movie-app-2.herokuapp.com/api/find/title/${upper}`)
-          .then(res => res.json())
-          .then(data => {
-            console.log(data[0]);
-            const vito = data[0];
-            console.log(vito);
-            this.setState({ movies: vito, loading: false });
-          
-          } );
-          
-    }
+    const lower = event;
+    const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
+    
+    this.setState({search: upper});
+    
   }
 
   render() {
