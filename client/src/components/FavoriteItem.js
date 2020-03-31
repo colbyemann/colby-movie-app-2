@@ -17,7 +17,7 @@ class FavoriteItem extends React.Component {
      
         
     render () {  
-        let url = "https://image.tmdb.org/t/p/w92"  + this.props.fav;
+        let url = "https://image.tmdb.org/t/p/w92/"  + this.props.fav;
         
         return (
           

@@ -13,30 +13,16 @@ import CastDetials from './components/CastDetails.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { movies: [], favorites: [], loading: false, search: '', y1: '', y2: '', r1: '', r2: '', clear: 0, add: ''};
+    this.state = { movies: [], favorites: [], loading: false, search: '', y1: '', y2: '', r1: '', r2: '', clear: 0, add: '', remove: ''};
    }
 
    //Add Fav to array
    addFavClick = (e) => {
-    let check = undefined;
-    let tempArray = this.state.favorites;
-
-    check = tempArray.find( ({ id }) => id === e.id );
-    console.log(check)
-
-    if (check === undefined)
-    {tempArray.push(e);
-      this.setState({favorites: tempArray})
-    }}
+    this.setState({add: e});}
 
     //Remove Fav from Array
     removeFav = (e) =>{
-      let check = [];
-      let tempArray = this.state.favorites;
-      check = tempArray.filter(({ id }) => id != e)
-      console.log(check)
-      
-        this.setState({favorites: check})
+      this.setState({remove: e});
       
 
     }
@@ -145,14 +131,30 @@ class App extends React.Component {
               const url = "https://colby-movie-app-2.herokuapp.com/api/favorites/" + this.state.add + "/a";
               const response = await fetch(url);
               const jsonData = await response.json();
-              
-              this.setState( {movies: jsonData, loading: false} );
+              const data = jsonData[0]['favorites'];
+
+              this.setState( {favorites: data, loading: false} );
               
               }
               catch (error) {
               console.error(error);
               }
             }
+        else if(prevState.remove !== this.state.remove){
+              this.setState({loading: true});
+              try {
+                const url = "https://colby-movie-app-2.herokuapp.com/api/favorites/" + this.state.remove + "/r";
+                const response = await fetch(url);
+                const jsonData = await response.json();
+                const data = jsonData[0]['favorites'];
+  
+                this.setState( {favorites: data, loading: false} );
+                
+                }
+                catch (error) {
+                console.error(error);
+                }
+              }
   }
 
 
