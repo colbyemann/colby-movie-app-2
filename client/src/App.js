@@ -13,7 +13,7 @@ import CastDetials from './components/CastDetails.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { movies: [], favorites: [], loading: false, search: ''};
+    this.state = { movies: [], favorites: [], loading: false, search: null};
    }
 
    //Add Fav to array
@@ -44,22 +44,7 @@ class App extends React.Component {
     //fetch code from API
    async componentDidMount() {
     this.setState({loading: true});
-    if(this.state.search != '')
-    {
-      try {
-        const url = "https://colby-movie-app-2.herokuapp.com/api/find/title/" + this.state.search;
-        const response = await fetch(url);
-        const jsonData = await response.json();
-        const data = jsonData[0];
-       
-        this.setState( {movies: data, loading: false} );
-        
-        }
-        catch (error) {
-        console.error(error);
-        }
-    }
-    else{
+    
     try {
     const url = "https://colby-movie-app-2.herokuapp.com/api/movies";
     const response = await fetch(url);
@@ -75,9 +60,26 @@ class App extends React.Component {
     catch (error) {
     console.error(error);
     }
-  }
     
    }
+
+  async componentDidUpdate() {
+
+    this.setState({loading: true});
+    try {
+      const url = "https://colby-movie-app-2.herokuapp.com/api/find/title/" + this.state.search;
+      const response = await fetch(url);
+      const jsonData = await response.json();
+      const data = jsonData[0];
+      console.log(data);
+      this.setState( {movies: data, loading: false} );
+      
+      }
+      catch (error) {
+      console.error(error);
+      }
+
+  }
 
 
    searchTitle  = (event) => {
@@ -86,7 +88,6 @@ class App extends React.Component {
     
     this.setState({search: upper});
     console.log(this.state.search);
-    this.forceUpdate();
   }
 
   render() {
