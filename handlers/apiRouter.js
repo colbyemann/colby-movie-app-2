@@ -91,4 +91,37 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
       });
       });  
 
+      router.get('/favorites',  ( req, resp) => {
+         UserModel.find({favorties: req.user.favorites},  (err, data) => {
+            if (err) {
+               resp.json({ message: 'Movie not found' });
+            } else {
+               resp.json(data);
+            }
+         });   
+       
+       });
+
+
+       router.post('/favorites/:add',  ( req, resp) => {
+         UserModel.findById(req.user._id,  function(err, sql) {
+            if(err) {
+                res.send(msg.error('error retrieving sql-procedure', err));
+            } else {
+                if(!sql) {
+                    return res.send(msg.error('no sql-procedure found with id '
+                        + req.params.id, null));
+                }
+    
+                UserModel.findByIdAndUpdate(req.user._id,
+                    {$push: {favorites: req.parans.add}},
+                    {safe: true, upsert: true},
+                    function(err, sql) {
+                        // fancy error handling
+                    }
+                );
+            }
+        });
+    });
+
 module.exports = router;
