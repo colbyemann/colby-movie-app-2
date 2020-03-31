@@ -113,6 +113,11 @@ class App extends React.Component {
             const url = "https://colby-movie-app-2.herokuapp.com/api/movies";
             const response = await fetch(url);
             const jsonData = await response.json();
+            jsonData.sort(function(a, b){
+              if(a.title < b.title) { return -1; }
+              if(a.title > b.title) { return 1; }
+              return 0;
+          })
             
             this.setState( {movies: jsonData, loading: false} );
             
