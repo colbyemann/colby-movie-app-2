@@ -4,7 +4,7 @@ import MovieThumb from './MovieThumb.js';
 class MovieList extends React.Component {
  render() {
      //produces list of movies from array, or returns no movies found
-    if (this.props.movies.length > 1) {
+    if (this.props.movies.length >= 1) {
         return (
             
         <section class="box">
