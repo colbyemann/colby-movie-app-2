@@ -43,9 +43,9 @@ router.get('/brief/', helper.ensureAuthenticated, (req, resp) => {
 router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
    MovieModel.find({id: req.params.id}, (err, data) => {
       if (err) {
-         resp.json({ message: 'Movie not found' });
+         
       } else {
-         resp.json(data);
+         
       }
    });   
  
@@ -55,9 +55,9 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
    var id = req.params.id;
    MovieModel.find({ $text: { $search: id } }, (err, data) => {
       if (err) {
-         resp.json({ message: 'Title not found' });
+         
       } else {
-         resp.json(data);
+         
       }
    });   
  

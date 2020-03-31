@@ -23,10 +23,10 @@ class FavoriteItem extends React.Component {
           
                     
                     <div class="artist-collection-photo">
-                        <button class="close2" type="button" onClick={() => {  this.handleClick(); this.props.remove(this.props.fav);}}>×</button>
+                        <button class="close2" type="button" onClick={() => {  this.handleClick(); this.props.remove(this.props.fav.id);}}>×</button>
                         <Link  to={{
                 pathname: `/MovieDetails`,
-                state: { fav: this.props.favorites}}}>
+                state: {id: this.props.fav.id, fav: this.props.favorites}}}>
                          <img height='130px' src={url} class="img-thumbnail" />
                          </Link>
                         

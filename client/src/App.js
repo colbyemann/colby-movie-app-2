@@ -18,11 +18,15 @@ class App extends React.Component {
 
    //Add Fav to array
    addFavClick = (e) => {
-    this.setState({add: e});}
+    var s1 = e;
+    var s2 = s1.substr(e);
+    this.setState({add: s2});}
 
     //Remove Fav from Array
     removeFav = (e) =>{
-      this.setState({remove: e});
+      var s1 = e;
+      var s2 = s1.substr(e);
+      this.setState({remove: s2});
       
 
     }
@@ -131,9 +135,9 @@ class App extends React.Component {
               const url = "https://colby-movie-app-2.herokuapp.com/api/favorites/" + this.state.add + "/a";
               const response = await fetch(url);
               const jsonData = await response.json();
-              const data = jsonData[0]['favorites'];
-
-              this.setState( {favorites: data, loading: false} );
+              console.log(this.state.add)
+              console.log(jsonData)
+              this.setState( {favorites: jsonData, loading: false} );
               
               }
               catch (error) {
