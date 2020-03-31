@@ -54,8 +54,8 @@ backgroundRepeat: 'no-repeat'
      
  <Link  to={{
      pathname: `/browse`
-     }}>
- <Button onClick={(e) => {this.handleClick(e)}}>Show Matching Movies</Button>
+     }} onClick={(e) => {this.handleClick(e)}}>
+ <Button>Show Matching Movies</Button>
  </Link>
 
  <Link to={{ pathname: '/browse'}}>
