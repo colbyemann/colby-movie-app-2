@@ -133,7 +133,11 @@ class App extends React.Component {
               const url = "https://colby-movie-app-2.herokuapp.com/api/favorites/" + this.state.add + "/a";
               const response = await fetch(url);
               const jsonData = await response.json();
-              const data = jsonData[0]['favorites'];
+              console.log(jsonData[0]['favorites'])
+              console.log(jsonData['favorites'])
+              console.log(jsonData)
+              const data = jsonData['favorites'];
+              
 
               this.setState( {favorites: data, loading: false} );
               
