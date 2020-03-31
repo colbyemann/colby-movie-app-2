@@ -18,7 +18,7 @@ class App extends React.Component {
 
    //Add Fav to array
    addFavClick = (e) => {
-    var s2 = e.substring(1);
+    var s2 = e.substring(1)
     this.setState({add: s2});}
 
     //Remove Fav from Array

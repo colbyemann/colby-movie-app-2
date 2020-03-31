@@ -20,7 +20,7 @@ class MovieThumb extends React.Component {
  <div class="column"><p>{this.props.movie.ratings.average}</p> </div>
  <div class="column"><Link  to={{
      pathname: `/MovieDetails`,
-     state: {id: this.props.movie.id, fav: this.props.favorites}}}><Button >View</Button></Link><Button onClick={ () => this.props.fav(this.props.movie) }>❤</Button></div>
+     state: {id: this.props.movie.id, fav: this.props.favorites}}}><Button >View</Button></Link><Button onClick={ () => this.props.fav(this.props.movie.poster) }>❤</Button></div>
 </div>
  
  
