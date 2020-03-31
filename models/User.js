@@ -23,7 +23,10 @@ const userSchema = new mongoose.Schema({
   email: String,
   password_bcrypt: String,
   apikey: String,
-  favorites: Array
+  favorites: {
+    type: [String],
+    default: undefined
+  }
   });
 
       // We'll use this later on to make sure that the user trying to log in has the
