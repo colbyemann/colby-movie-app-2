@@ -73,6 +73,7 @@ class App extends React.Component {
       const jsonData = await response.json();
       
       this.setState( {movies: jsonData, loading: false} );
+      console.log(this.state.movies)
       }
       catch (error) {
       console.error(error);
