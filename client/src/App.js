@@ -13,7 +13,7 @@ import CastDetials from './components/CastDetails.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { movies: [], favorites: [], loading: false, search: '', y1: '', y2: '', r1: '', r2: ''};
+    this.state = { movies: [], favorites: [], loading: false, search: '', y1: '', y2: '', r1: '', r2: '', clear: false};
    }
 
    //Add Fav to array
@@ -107,6 +107,20 @@ class App extends React.Component {
           console.error(error);
           }
         }
+        else if(prevState.clear !== this.state.clear){
+          this.setState({loading: true});
+          try {
+            const url = "https://colby-movie-app-2.herokuapp.com/api/movies";
+            const response = await fetch(url);
+            const jsonData = await response.json();
+            
+            this.setState( {movies: jsonData, loading: false} );
+            
+            }
+            catch (error) {
+            console.error(error);
+            }
+          }
   }
 
 
@@ -127,6 +141,11 @@ class App extends React.Component {
     
   }
 
+  searchClear= (e1) => {
+    this.setState({clear: e1});
+    
+  }
+
   render() {
     const loading = this.state.loading;
     //use the loading to display loader wheel from Loader 
@@ -143,7 +162,7 @@ class App extends React.Component {
   <Route path='/CastDetails' exact render={(props) => <CastDetials {...props} remove={this.removeFav} key={Math.random()}/>}/>
 
   {loading ? (<Loader />) :<Route path='/browse' exact render={ (props) =>
-  <MovieBrowser {...props} movies={this.state.movies} loading={this.state.loading} search={this.searchTitle} searchYear={this.searchYear} searchRating={this.searchRating}  favorites={this.state.favorites} fav={this.addFavClick} remove={this.removeFav}/>
+  <MovieBrowser {...props} movies={this.state.movies} loading={this.state.loading} search={this.searchTitle} searchYear={this.searchYear} searchRating={this.searchRating} searchClear={this.searchClear} favorites={this.state.favorites} fav={this.addFavClick} remove={this.removeFav}/>
   }/>}
   </main>
   );
