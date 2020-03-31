@@ -73,7 +73,7 @@ class App extends React.Component {
       const jsonData = await response.json();
       const data = jsonData[0];
       console.log(data);
-      this.setState( {movies: data, loading: false} );
+      this.setState( {movies: data, loading: false, search: ''} );
       
       }
       catch (error) {
