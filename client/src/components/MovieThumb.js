@@ -11,7 +11,7 @@ class MovieThumb extends React.Component {
  <div class="row">
  <div class="column"><figure><Link  to={{
      pathname: `/MovieDetails`,
-     state: {id: this.props.movie.id, fav: this.props.favorites}}}><img src={imgURL} title={this.props.movie.title} alt={this.props.movie.title} /></Link>
+     state: {id: this.props.movie.id, fav: this.props.favorites}}}><img src={imgURL} title={this.props.movie.title} alt={this.props.movie.title} style={{ marginBottom: 5 }}/></Link>
  </figure></div>
  <div class="column"><Link  to={{
      pathname: `/MovieDetails`,
