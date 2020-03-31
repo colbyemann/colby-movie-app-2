@@ -13,7 +13,7 @@ import CastDetials from './components/CastDetails.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { movies: [], favorites: [], loading: false, search: '', y1: '', y2: '', r1: '', r2: '', clear: 0};
+    this.state = { movies: [], favorites: [], loading: false, search: '', y1: '', y2: '', r1: '', r2: '', clear: 0, add: ''};
    }
 
    //Add Fav to array
@@ -60,6 +60,18 @@ class App extends React.Component {
     catch (error) {
     console.error(error);
     }
+
+    try {
+      const url = "https://colby-movie-app-2.herokuapp.com/api/favorites";
+      const response = await fetch(url);
+      const jsonData = await response.json();
+      
+      this.setState( {favorites: jsonData, loading: false} );
+      console.log(this.state.favorites);
+      }
+      catch (error) {
+      console.error(error);
+      }
     
    }
 
@@ -126,6 +138,20 @@ class App extends React.Component {
             console.error(error);
             }
           }
+        else if(prevState.add !== this.state.add){
+            this.setState({loading: true});
+            try {
+              const url = "https://colby-movie-app-2.herokuapp.com/api/favorites/" + this.state.add + "/a";
+              const response = await fetch(url);
+              const jsonData = await response.json();
+              
+              this.setState( {movies: jsonData, loading: false} );
+              
+              }
+              catch (error) {
+              console.error(error);
+              }
+            }
   }
 
 
