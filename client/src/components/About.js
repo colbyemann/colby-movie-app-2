@@ -38,7 +38,6 @@ export default class App extends React.Component{
       <h1>About</h1>
           <h3>Colby Emann</h3>
           <a href="https://github.com/colbyemann/colby-movie-app-2"><p>Github</p></a>
-          <br></br>
           <h3>Tech</h3>
           <a href="https://ant.design/"><p>Design Components from Ant Design</p></a>
           <a href="https://www.mongodb.com/cloud/atlas"><p>API created with and hosted by MonogoDB Atlus</p></a> 
@@ -52,7 +51,7 @@ export default class App extends React.Component{
           <a href="https://colby-movie-app-2.herokuapp.com/api/find/title/Rocky"><p>Find movie by Title</p></a>
           <a href="https://colby-movie-app-2.herokuapp.com/api/find/year/2009/2010"><p>Find Year Range</p></a>
           <a href="https://colby-movie-app-2.herokuapp.com/api/find/rating/4/5"><p>Find Ratings Range</p></a>
-          
+          <br></br>
 
       </Modal>
       </div>
