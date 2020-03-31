@@ -101,7 +101,7 @@ Search
         >
           <form>
             <Input type='text' name='title'onChange={this.handleChange}/>
-            <Button onClick={(e) => {this.handleClick(e)}}>Filter</Button>
+            <Button onClick={(e) => {this.handleClick(e)}} style={{ marginTop: 5 }}>Filter</Button>
           </form>
         </Drawer>
 
@@ -124,11 +124,11 @@ Search
           <Input type='text' name='y1' onChange={this.handleChange}/>
           and
           <Input type='text' name='y2' onChange={this.handleChange}/>
-          <Button onClick={(e) => {this.handleClickYear(e)}}>Filter</Button>
+          <Button onClick={(e) => {this.handleClickYear(e)}} style={{ marginTop: 5 }}>Filter</Button>
           </form>
         </Drawer>
 
-        <div style={{ marginTop: 5 }}>
+        <div style={{ marginTop: 5, marginBottom: 5 }}>
           <Button type="primary" onClick={this.showDrawer3}>
             Rating
           </Button>
@@ -146,7 +146,7 @@ Search
           <Input type='text' name='r1' onChange={this.handleChange}/>
           and
           <Input type='text' name='r2' onChange={this.handleChange}/>
-          <Button onClick={(e) => {this.handleClickRating(e)}}>Filter</Button>
+          <Button onClick={(e) => {this.handleClickRating(e)}} style={{ marginTop: 5 }}>Filter</Button>
         </Drawer>
         <Button onClick={(e) => {this.handleClickClear(e)}}>Clear</Button>
       </div>
