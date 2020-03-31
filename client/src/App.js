@@ -13,7 +13,7 @@ import CastDetials from './components/CastDetails.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { movies: [], favorites: [], loading: false, search: null};
+    this.state = { movies: [], favorites: [], loading: false, search: ''};
    }
 
    //Add Fav to array
@@ -65,6 +65,7 @@ class App extends React.Component {
 
   async componentDidUpdate() {
 
+    if(this.state.search != ''){
     this.setState({loading: true});
     try {
       const url = "https://colby-movie-app-2.herokuapp.com/api/find/title/" + this.state.search;
@@ -78,7 +79,7 @@ class App extends React.Component {
       catch (error) {
       console.error(error);
       }
-
+    }
   }
 
 
