@@ -43,9 +43,9 @@ router.get('/brief/', helper.ensureAuthenticated, (req, resp) => {
 router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
    MovieModel.find({id: req.params.id}, (err, data) => {
       if (err) {
-         
+         resp.json({ message: 'Movie not found' });
       } else {
-         
+         resp.json(data);
       }
    });   
  
@@ -55,9 +55,9 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
    var id = req.params.id;
    MovieModel.find({ $text: { $search: id } }, (err, data) => {
       if (err) {
-         
+         resp.json({ message: 'Title not found' });
       } else {
-         
+         resp.json(data);
       }
    });   
  
@@ -108,7 +108,7 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
             _id: req.user._id
         }, {
             "$push": {"favorites": favs} 
-        }, {useFindAndModify: false}, function(err) {
+        }, {useFindAndModify: false}, function(err,data) {
          if (err) {
             resp.json({ message: 'favorites not found' });
          } else {
@@ -119,18 +119,19 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
        
        });
 
-       router.get('/favorites/:remove/r', helper.ensureAuthenticated, ( req, resp) => {
+       router.get('/favorites/:remove', helper.ensureAuthenticated, ( req, resp) => {
          var favs = req.params.remove;
         UserModel.findOneAndUpdate({
            _id: req.user._id
        }, {
            "$pull": {"favorites": favs} 
-       }, {useFindAndModify: false}, function(err) {
+       }, {useFindAndModify: false}, function(err, data) {
          if (err) {
             resp.json({ message: 'favorites not found' });
          } else {
             resp.json(data);
          }
+           
        });
           
       
