@@ -44,7 +44,7 @@ class App extends React.Component {
     //fetch code from API
    async componentDidMount() {
     this.setState({loading: true});
-    if(search != '')
+    if(this.state.search != '')
     {
       try {
         const url = "https://colby-movie-app-2.herokuapp.com/api/find/title/" + this.state.search;
