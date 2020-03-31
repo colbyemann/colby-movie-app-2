@@ -63,9 +63,9 @@ class App extends React.Component {
     
    }
 
-  async componentDidUpdate() {
+  async componentDidUpdate(prevState) {
 
-    if(this.state.search != ''){
+    if(prevState.search !== this.state.search){
     this.setState({loading: true});
     try {
       const url = "https://colby-movie-app-2.herokuapp.com/api/find/title/" + this.state.search;
@@ -73,12 +73,13 @@ class App extends React.Component {
       const jsonData = await response.json();
       const data = jsonData[0];
       console.log(data);
-      this.setState( {movies: data, loading: false, search: ''} );
+      
       
       }
       catch (error) {
       console.error(error);
       }
+      
     }
   }
 
