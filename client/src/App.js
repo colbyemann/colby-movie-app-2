@@ -99,7 +99,7 @@ class App extends React.Component {
   <main>
   <HeaderApp />
   
-  {loading ? (<Loader />) :<Route path='/' exact render={(props) => <Home {...props} movies={this.state.movies}/>} />}
+  {loading ? (<Loader />) :<Route path='/' exact render={(props) => <Home {...props} movies={this.state.movies} search={this.searchTitle}/>} />}
   <Route path='/home' exact render={(props) => <Home {...props} movies={this.state.movies}/>}/>
  
   <Route path='/MovieDetails' exact render={(props) => <MovieDetials {...props} fav={this.addFavClick} remove={this.removeFav} key={Math.random()}/>}/>
