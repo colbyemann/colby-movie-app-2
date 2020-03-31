@@ -85,7 +85,8 @@ class App extends React.Component {
     const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
     
     this.setState({search: upper});
-    
+    console.log(this.state.search);
+    this.forceUpdate();
   }
 
   render() {
