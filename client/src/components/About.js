@@ -29,7 +29,7 @@ export default class App extends React.Component{
       <Modal
       //this will completely overwrite the default css completely
       //Modal Compent used from https://codepen.io/ph1p/pen/XjNONb
-      containerStyle={{background: '#C8D5B9'}} //changes styling on the inner content area
+      containerStyle={{background: '#C8D5B9', textAlign: 'center'}} //changes styling on the inner content area
       closeOnOuterClick={true}
       show={this.state.show}
       onClose={this.close.bind(this)}>
@@ -37,7 +37,13 @@ export default class App extends React.Component{
       <a style={closeStyle} onClick={this.close.bind(this)}>X</a>
       <h1>About</h1>
           <h3>Colby Emann</h3>
-          <a href="https://github.com/colbyemann/colby-movie-app-2"><h3>Github</h3></a>
+          <a href="https://github.com/colbyemann/colby-movie-app-2"><p>Github</p></a>
+          <br></br>
+          <h3>Tech</h3>
+          <a href="https://ant.design/"><p>Design Components from Ant Design</p></a>
+          <a href="https://www.mongodb.com/cloud/atlas"><p>API created with and hosted by MonogoDB Atlus</p></a> 
+          <a href="https://ejs.co/"><p>Login Created with Node + View Template Engine Ejs</p></a> 
+          <p>Single Page App Created in React</p>
           <br></br>
           <h3>API LINKS</h3>
           <a href="https://colby-movie-app-2.herokuapp.com/api/movies/"><p>All Movies</p></a>
