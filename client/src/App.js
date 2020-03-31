@@ -63,7 +63,7 @@ class App extends React.Component {
     
    }
 
-  async componentDidUpdate(prevState) {
+  async componentDidUpdate(prevProps, prevState) {
 
     if(prevState.search !== this.state.search){
     this.setState({loading: true});
