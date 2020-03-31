@@ -95,7 +95,7 @@ class MovieFilters extends React.Component {
 
 <div className="site-drawer-render-in-current-wrapper">
 Search
-<div style={{ marginTop: 5 }}>
+<div style={{ marginTop: 16 }}>
           <Button type="primary" onClick={this.showDrawer}>
             Title
           </Button>
@@ -115,7 +115,7 @@ Search
           </form>
         </Drawer>
 
-        <div style={{ marginTop: 5 }}>
+        <div style={{ marginTop: 16 }}>
           <Button type="primary" onClick={this.showDrawer2}>
             Year
           </Button>
@@ -132,7 +132,7 @@ Search
           <p>Some contents...</p>
         </Drawer>
 
-        <div style={{ marginTop: 5 }}>
+        <div style={{ marginTop: 16 }}>
           <Button type="primary" onClick={this.showDrawer3}>
             Rating
           </Button>
