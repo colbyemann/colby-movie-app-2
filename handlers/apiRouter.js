@@ -103,12 +103,8 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
        });
 
        router.post('/favorites/:add', helper.ensureAuthenticated, ( req, resp) => {
-         UserModel.findOneAndUpdate({_id: req.user._id}, {$push:{favorites: [req.params.add]}}, (err, data) => {
-            if (err) {
-               resp.json({ message: 'Movie not found' });
-            } else {
-               resp.json(data);
-            }
+         UserModel.findOneAndUpdate({_id: req.user._id}, {$push:{favorites: [req.params.add]}}, {new: true, upsert:true}, (err, data) => {
+            
          });   
        
        });
