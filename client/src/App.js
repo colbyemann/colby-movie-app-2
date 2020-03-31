@@ -13,7 +13,7 @@ import CastDetials from './components/CastDetails.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { movies: [], favorites: [], loading: false, search: ''};
+    this.state = { movies: [], favorites: [], loading: false, search: '', y1: '', y2: '', r1: '', r2: ''};
    }
 
    //Add Fav to array
@@ -79,6 +79,34 @@ class App extends React.Component {
       console.error(error);
       }
     }
+    else if(prevState.y1 !== this.state.y1){
+      this.setState({loading: true});
+      try {
+        const url = "https://colby-movie-app-2.herokuapp.com/api/find/year/" + this.state.y1 + "/" + this.state.y2;
+        const response = await fetch(url);
+        const jsonData = await response.json();
+        
+        this.setState( {movies: jsonData, loading: false} );
+        
+        }
+        catch (error) {
+        console.error(error);
+        }
+      }
+      else if(prevState.r1 !== this.state.r1){
+        this.setState({loading: true});
+        try {
+          const url = "https://colby-movie-app-2.herokuapp.com/api/find/rating/" + this.state.r1 + "/" + this.state.r2;
+          const response = await fetch(url);
+          const jsonData = await response.json();
+          
+          this.setState( {movies: jsonData, loading: false} );
+          
+          }
+          catch (error) {
+          console.error(error);
+          }
+        }
   }
 
 
@@ -87,7 +115,16 @@ class App extends React.Component {
     const upper = lower.charAt(0).toUpperCase() + lower.substring(1);
     
     this.setState({search: upper});
-    console.log(this.state.search);
+  }
+
+  searchYear = (e1, e2) => {
+    this.setState({y1: e1, y2: e2});
+    
+  }
+
+  searchRating = (e1, e2) => {
+    this.setState({r1: e1, r2: e2});
+    
   }
 
   render() {
@@ -106,7 +143,7 @@ class App extends React.Component {
   <Route path='/CastDetails' exact render={(props) => <CastDetials {...props} remove={this.removeFav} key={Math.random()}/>}/>
 
   {loading ? (<Loader />) :<Route path='/browse' exact render={ (props) =>
-  <MovieBrowser {...props} movies={this.state.movies} loading={this.state.loading} search={this.searchTitle} favorites={this.state.favorites} fav={this.addFavClick} remove={this.removeFav}/>
+  <MovieBrowser {...props} movies={this.state.movies} loading={this.state.loading} search={this.searchTitle} searchYear={this.searchYear} searchRating={this.searchRating}  favorites={this.state.favorites} fav={this.addFavClick} remove={this.removeFav}/>
   }/>}
   </main>
   );

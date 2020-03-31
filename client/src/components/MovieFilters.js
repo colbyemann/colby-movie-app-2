@@ -8,9 +8,8 @@ import { Drawer, Button } from 'antd';
 class MovieFilters extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { title: '', beforetext: '', aftertext: '', betweentext1: '', betweentext2: '', 
-        selectedOption: false, valuebelow: 5.0, valueabove: 5.0, valuebetween1: 5.0, valuebetween2: 5.0,
-        selectedOption2: false, visible: false, visible2: false, visible3: false };
+        this.state = { title: '', r1: '', r2: '', y1: '', y2: '', 
+        visible: false, visible2: false, visible3: false };
        }
        showDrawer = () => {
         this.setState({
@@ -41,7 +40,7 @@ class MovieFilters extends React.Component {
 
        handleChange = e => {
         this.setState({ [e.currentTarget.name]: e.currentTarget.value });
-        console.log(this.state.title)
+        
        }
 
        handleClick = (e) => {
@@ -52,39 +51,22 @@ class MovieFilters extends React.Component {
 
        }
 
-       //functions save change events for sliders and textboxes
-       handleOptionChange = (changeEvent) => {
-        this.setState({
-          selectedOption: changeEvent.target.value
-        });
-      }
+       handleClickYear = (e) => {
+        e.preventDefault();
+        //filter by year
+        this.props.searchYear(this.state.y1, this.state.y2);
+  
 
-      handleOptionChangeRating = (changeEvent) => {
-        this.setState({
-          selectedOption2: changeEvent.target.value
-        });
-      }
+       }
 
-      sliderChange1 = (value) => {
-        this.setState({
-          valuebelow: value
-        })
-      }
-      sliderChange2 = (value) => {
-        this.setState({
-          valueabove: value
-        })
-      }
-      sliderChange3 = (value) => {
-        this.setState({
-          valuebetween1: value
-        })
-      }
-      sliderChange4 = (value) => {
-        this.setState({
-          valuebetween2: value
-        })
-      }
+       handleClickRating = (e) => {
+        e.preventDefault();
+        //filter by rating
+        this.props.searchRating(this.state.r1, this.state.r2);
+  
+
+       }
+
 
 
  render() {
@@ -129,7 +111,13 @@ Search
           getContainer={false}
           style={{ position: 'absolute' }}
         >
-          <p>Some contents...</p>
+          <form>
+          Between
+          <Input type='text' name='y1' onChange={this.handleChange}/>
+          and
+          <Input type='text' name='y2' onChange={this.handleChange}/>
+          <Button onClick={(e) => {this.handleClickYear(e)}}>Filter</Button>
+          </form>
         </Drawer>
 
         <div style={{ marginTop: 5 }}>
@@ -146,7 +134,11 @@ Search
           getContainer={false}
           style={{ position: 'absolute' }}
         >
-          <p>Some contents...</p>
+          Between
+          <Input type='text' name='r1' onChange={this.handleChange}/>
+          and
+          <Input type='text' name='r2' onChange={this.handleChange}/>
+          <Button onClick={(e) => {this.handleClickRating(e)}}>Filter</Button>
         </Drawer>
       </div>
   
