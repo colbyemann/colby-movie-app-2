@@ -94,7 +94,7 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
       router.get('/favorites', helper.ensureAuthenticated, ( req, resp) => {
          UserModel.find({_id: req.user._id}, 'favorites -_id', (err, data) => {
             if (err) {
-               resp.json({ message: 'Movie not found' });
+               resp.json({ message: 'favorites not found' });
             } else {
                resp.json(data);
             }
@@ -103,8 +103,12 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
        });
 
        router.post('/favorites/:add', helper.ensureAuthenticated, ( req, resp) => {
-         UserModel.findOneAndUpdate({_id: req.user._id}, {$push:{favorites: [req.params.add]}}, {new: true, upsert:true}, (err, data) => {
-            
+         UserModel.findOneAndUpdate(req.user._id, {$push:{favorites: req.params.add}}, {safe: true, upsert: true}, (err, data) => {
+            if (err) {
+               resp.json({ message: 'favorites not found' });
+            } else {
+               resp.json(data);
+            }
          });   
        
        });
