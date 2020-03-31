@@ -71,15 +71,12 @@ class App extends React.Component {
       const url = "https://colby-movie-app-2.herokuapp.com/api/find/title/" + this.state.search;
       const response = await fetch(url);
       const jsonData = await response.json();
-      const data = jsonData[0];
-      console.log(data);
       
-      
+      this.setState( {movies: jsonData, loading: false} );
       }
       catch (error) {
       console.error(error);
       }
-      
     }
   }
 
