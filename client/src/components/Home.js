@@ -16,6 +16,14 @@ class Home extends React.Component {
         console.log(this.state.title)
        }
 
+       handleClick = (e) => {
+        e.preventDefault();
+        //filter by title
+        this.props.search(this.state.title);
+  
+
+       }
+
  render() {
     //Hero Image modified from Lab 2
     //Transition example modified from http://reactcommunity.org/react-transition-group/transition
@@ -45,9 +53,9 @@ backgroundRepeat: 'no-repeat'
  <p>
      
  <Link  to={{
-     pathname: `/browse`, state: this.state.title
+     pathname: `/browse`
      }}>
- <Button >Show Matching Movies</Button>
+ <Button onClick={(e) => {this.handleClick(e)}}>Show Matching Movies</Button>
  </Link>
 
  <Link to={{ pathname: '/browse'}}>
