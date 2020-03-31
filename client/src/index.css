@@ -123,6 +123,7 @@ button:hover {
 img.photoThumb {
   width: 100px;
   height: 100px;
+  margin-bottom: 5px;
 }
 
 .details {
