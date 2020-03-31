@@ -109,7 +109,11 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
         }, {
             "$push": {"favorites": favs} 
         }, {useFindAndModify: false}, function(err) {
-            if (err) throw (err);
+         if (err) {
+            resp.json({ message: 'favorites not found' });
+         } else {
+            resp.json(data);
+         }
         });
            
        
@@ -122,7 +126,11 @@ router.get('/movies/:id', helper.ensureAuthenticated, ( req, resp) => {
        }, {
            "$pull": {"favorites": favs} 
        }, {useFindAndModify: false}, function(err) {
-           if (err) throw (err);
+         if (err) {
+            resp.json({ message: 'favorites not found' });
+         } else {
+            resp.json(data);
+         }
        });
           
       
