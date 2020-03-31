@@ -3,7 +3,7 @@ import MovieFilters from './MovieFilters.js';
 import MovieList from './MovieList.js';
 import Favorites from './Favorites.js';
 import Loader from './Loader.js';
-import FuzzySearch from 'fuzzy-search';
+
 
 class PhotoBrowser extends React.Component {
     state = {
@@ -78,7 +78,7 @@ class PhotoBrowser extends React.Component {
       {
           if(e != undefined)
           {
-             this.searchTitle(e)
+             this.props.search(e)
              this.props.location.state = undefined;
           }
       }
