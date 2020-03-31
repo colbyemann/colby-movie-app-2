@@ -91,7 +91,7 @@ class PhotoBrowser extends React.Component {
  <div>
      
  <Favorites favorites={this.props.favorites} remove={this.props.remove}/>
- <MovieFilters search={this.props.search} 
+ <MovieFilters search={this.props.search} searchYear={this.props.searchYear} searchRating={this.props.searchRating}
  year={this.searchBeforeYear} yearAfter={this.searchAfterYear} yearBe={this.searchBetweenYear}
  below={this.searchBelowRating} above={this.searchAboveRating} ratingBe={this.searchBetweenRating}/>
  {loading ? <Loader /> :
