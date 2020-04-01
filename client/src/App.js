@@ -13,7 +13,7 @@ import CastDetials from './components/CastDetails.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { movies: [], favorites: [], loading: false, search: '', y1: '', y2: '', r1: '', r2: '', clear: 0, add: '', remove: ''};
+    this.state = { movies: [], favorites: [], loading: false, search: '', y1: '', y2: '', r1: '', r2: '', clear: 0, add: '', remove: '', change: 0};
    }
 
    //Add Fav to array
@@ -128,14 +128,13 @@ class App extends React.Component {
             }
           }
         else if(prevState.add !== this.state.add){
+          this.setState({loading: true});
             try {
               const url = "https://colby-movie-app-2.herokuapp.com/api/favorites/" + this.state.add + "/a";
               const response = await fetch(url);
               const jsonData = await response.json();
-              console.log(jsonData[0]['favorites'])
-              console.log(jsonData['favorites'])
-              console.log(jsonData)
-              return ;
+              
+              this.setState( {change: Math.random(), loading: false} );
               
               }
               catch (error) {
@@ -143,13 +142,13 @@ class App extends React.Component {
               }
             }
         else if(prevState.remove !== this.state.remove){
+          this.setState({loading: true});
               try {
                 const url = "https://colby-movie-app-2.herokuapp.com/api/favorites/" + this.state.remove;
                 const response = await fetch(url);
                 const jsonData = await response.json();
-                const data = jsonData['favorites'];
-  
-                return ;
+                
+                this.setState( {change: Math.random(), loading: false} );
                 
                 }
                 catch (error) {
