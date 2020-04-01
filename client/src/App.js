@@ -134,7 +134,7 @@ class App extends React.Component {
               const response = await fetch(url);
               const jsonData = await response.json();
               
-              this.setState( {change: Math.random(), loading: false} );
+              this.setState( {change: Math.random()} );
               try {
                 const url = "https://colby-movie-app-2.herokuapp.com/api/favorites";
                 const response = await fetch(url);
@@ -160,7 +160,8 @@ class App extends React.Component {
                 const response = await fetch(url);
                 const jsonData = await response.json();
                 
-                this.setState( {change: Math.random(), loading: false} );
+                this.setState( {change: Math.random()} );
+                this.setState({loading: true});
                 try {
                   const url = "https://colby-movie-app-2.herokuapp.com/api/favorites";
                   const response = await fetch(url);
